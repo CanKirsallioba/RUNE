@@ -1,6 +1,8 @@
-Part A - Language Design
+//Part A - Language Design
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+--------------------------------------------------------------------------------------------------------------------
+// ABOUT PROGRAM
+
 <program> ::= <statement_list> 
 <statement_list> ::= <statement>;
     | <statement_list> <statement>;
@@ -9,11 +11,122 @@ Part A - Language Design
 <expression> ::= <int_expression>
 <comment> ::= <comment_sign> <form>
 <form> ::= <identifier><form> | <identifier>
-////////////////////////////////////////////////////////////////////////////////////////////
+--------------------------------------------------------------------------------------------------------------------
 
 
-<int_expression> ::= <identifier><ass><int>
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT GENERAL TYPES AND DEFAULT STUFF
+
+<char> ::= <lowercase_char> | <uppercase_char>
+<lowercase_char> ::= a | b | c … | z
+<uppercase_char> ::= A | B | C ... | Z
+
+<assignment_operator> ::= <-         // so that it is different than other languages.
+
+<comment_sign> ::= "$"
+
+<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+<dot> ::= "."
+<sign> ::= +|-
+
+<integer> ::= <sign>?<digit>
+<float> ::= <sign>?<digit><dot><integer> | <sign>?<dot><integer>                  //TODO: Differentiate double and float
+<double> ::= <sign>?<digit><dot><integer> | <sign>?<dot><integer>
+<boolean> :: TRUE | FALSE
+<space> ::=  
+
+<left_curly> ::= "{"
+<right_curly> ::= "}"
+<left_regular> ::= "("
+<right_regular> ::= ")"
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT LOOPS (WHILE, FOR, DO WHILE)
+
+<loop> ::= <while> | <for> | <do_while>
+<while> ::= while <left_regular><logical_expression><right_regular><left_curly><statement_list><right_curly>
+<for> ::= for <left_regular><for_loop_expression><right_regular><left_curly><statement_list><right_curly>
+<do_while> ::= do <left_curly> <statement_list> <right_curly> <left_regular> while <left_regular><logical_expression><right_regular>;
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT CONDITIONALS
+
+<conditional> ::= <if>
+<if> ::= if <left_regular> <logical_expression> <right_regular><left_curly><statement_list><right_curly><else>
+<else> ::= else <left_curly> <statement_list> <right_curly>
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT EXPRESSIONS AND BLOCKS
+
+
+TODO
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT FUNCTIONS
+
+
+TODO
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT IO STUFF
+
+
+TODO
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+//ABOUT "PRIMITIVE" FUNCTIONS OF THE DRONE
+
+
+TODO
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
 
 <identifier> ::= <char>(<char>|<digit>)
-<char> ::= <lowercase_char> | <uppercase_char>
-<lowercase_char> ::= a|b|c … |z
+
+
+
+
+
+
+
+
+<int_expression> ::= <identifier><assignmentoperator><int>
