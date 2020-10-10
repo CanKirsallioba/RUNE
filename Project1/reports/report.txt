@@ -1,0 +1,19 @@
+Part A - Language Design
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+<program> ::= <statement_list> 
+<statement_list> ::= <statement>;
+    | <statement_list> <statement>;
+<statement> ::= <comment> | <expression> | <loop> |  
+<conditional> | <function_description>
+<expression> ::= <int_expression>
+<comment> ::= <comment_sign> <form>
+<form> ::= <identifier><form> | <identifier>
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+<int_expression> ::= <identifier><ass><int>
+
+<identifier> ::= <char>(<char>|<digit>)
+<char> ::= <lowercase_char> | <uppercase_char>
+<lowercase_char> ::= a|b|c … |z
