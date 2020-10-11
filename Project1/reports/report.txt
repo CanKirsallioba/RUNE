@@ -4,22 +4,21 @@
 // ABOUT PROGRAM
 
 <program> ::= <statement_list> 
-<statement_list> ::= <statement>;
-    | <statement_list> <statement>;
-<statement> ::= <comment> | <expression> | <loop> |  
+<statement_list> ::= <statement>
+                    | <statement_list> <statement>
+<statement> ::= <comment> | <expression>; | <loop> |  
 <conditional> | <function_description>
-<expression> ::= <int_expression>
-<comment> ::= <comment_sign> <form>
+<comment> ::= <comment_sign><form><comment_sign>
 <form> ::= <identifier><form> | <identifier>
 --------------------------------------------------------------------------------------------------------------------
-
 
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT GENERAL TYPES AND DEFAULT STUFF
 
-<char> ::= <lowercase_char> | <uppercase_char>
-<lowercase_char> ::= a | b | c … | z
-<uppercase_char> ::= A | B | C ... | Z
+<char> ::= <letter> | <digit>
+<letter> ::= <lowercase_letter> | <uppercase_letter>
+<lowercase_letter> ::= a | b | c ... | z
+<uppercase_letter> ::= A | B | C ... | Z
 
 <assignment_operator> ::= <-         // so that it is different than other languages.
 
@@ -27,19 +26,38 @@
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-<dot> ::= "."
-<sign> ::= +|-
+<int> ::= <int><digit> | <digit>
+<integer> ::= <sign><int> | <int>
 
-<integer> ::= <sign>?<digit>
-<float> ::= <sign>?<digit><dot><integer> | <sign>?<dot><integer>                  //TODO: Differentiate double and float
-<double> ::= <sign>?<digit><dot><integer> | <sign>?<dot><integer>
-<boolean> :: TRUE | FALSE
-<space> ::=  
+<fl> ::= <int><dot><int> | <dot><int> 
+<float> ::= <sign><fl> | <fl>               
 
-<left_curly> ::= "{"
-<right_curly> ::= "}"
-<left_regular> ::= "("
-<right_regular> ::= ")"
+<boolean> ::= TRUE | FALSE
+
+<space> ::= 
+
+<left_curly_parenthesis> ::= "{"
+<right_curly_parenthesis> ::= "}"
+<left_parenthesis> ::= "("
+<right_parenthesis> ::= ")"
+
+<greater_than_relation> ::= ">" | ">="
+<smaller_than_relation> ::= "<" | "<=
+
+<plus_operator> ::= +
+<subtraction_operator> ::= -
+<multiplication_operator> ::= *
+<division_operator> ::= /
+<remainder_operator> ::= %
+<exponentiation_operator> ::= **
+
+<and_operator> ::= &&
+<or_operator> ::= ||
+<equal_operator> ::= ==
+<not_equal_operator> ::= !=
+
+<identifier> ::= <letter> 
+                | <identifier> <char>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -49,10 +67,12 @@
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT LOOPS (WHILE, FOR, DO WHILE)
 
-<loop> ::= <while> | <for> | <do_while>
-<while> ::= while <left_regular><logical_expression><right_regular><left_curly><statement_list><right_curly>
-<for> ::= for <left_regular><for_loop_expression><right_regular><left_curly><statement_list><right_curly>
-<do_while> ::= do <left_curly> <statement_list> <right_curly> <left_regular> while <left_regular><logical_expression><right_regular>;
+<loop> ::= <while> 
+        | <for>
+        | <do_while>
+<while> ::= while <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
+<for> ::= for <left_parenthesis><for_loop_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
+<do_while> ::= do <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <left_parenthesis> while <left_regular><logical_expression><right_parenthesis>;
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -63,8 +83,9 @@
 //ABOUT CONDITIONALS
 
 <conditional> ::= <if>
-<if> ::= if <left_regular> <logical_expression> <right_regular><left_curly><statement_list><right_curly><else>
-<else> ::= else <left_curly> <statement_list> <right_curly>
+<if> ::= if <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis><else> 
+        | if <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
+<else> ::= else <left_curly_parenthesis><statement_list><right_curly_parenthesis>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -73,30 +94,74 @@
 
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT EXPRESSIONS AND BLOCKS
+a =(func(1,2,3));
+a = func(1,2,3) + b + c + func2(q, w, e);
+
+<int_expression> ::= <integer>
+<float_expression> ::= <float>
+<function_expression> ::= <identifier> <left_parenthesis> <argument_list> <right_parenthesis>
+<logical_expression> ::= <boolean> 
+                        | (<integer> | <float> | <identifier>) (<greater_than_relation> | <smaller_than_relation>) (<integer> | <float> | <identifier>)
+                        | <logical_expression> <and_operator> <logical_expression>
+                        | <logical_expression> <or_operator> <logical_expression>
+                        | <logical_expression> <equal_operator> <logical_expression>
+                        | <logical_expression> <not_equal_operator> <logical_expression>
+
+<function_call> ::= <function_expression>;
+
+<assignment> ::= <identifier> <assignment_operator> <expression>
+
+<expression> ::= <expr> <plus_operator> <expression2>
+                | <expression> <subtraction_operator> <expression2>
+                | <expression2>
+
+<expression2> ::= <expression2> <multiplication_operator> <expression3>
+                | <expression2> <division_operator> <expression3>
+                | <expression3>
+
+<expression3> ::= <expression4> <exponentiation_operator> <expression3>
+                | <expression4>
+
+<expression4> ::= <left_parenthesis> <expression> <right_parenthesis>
+                | <expr>
+                | <identifier>
+
+<expr> ::= <int_expression> 
+        | <float_expression> 
+        | <function_expression> 
+        | <logical_expression> 
 
 
-TODO
 
 --------------------------------------------------------------------------------------------------------------------
-
-
 
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT FUNCTIONS
 
+<return_type> ::= <void> | <data_type>
 
-TODO
+<function_definition> ::= <return_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+
+<argument> ::= <integer> 
+            | <float>
+            | <char>
+            | <boolean>
+            | <identifier>
+            | <function_expression>read_inclination_function
+
+<argument_list> ::= <argument>, <argument_list> 
+                | <argument> 
 
 --------------------------------------------------------------------------------------------------------------------
-
-
+scan(identifier);
+output(identifier);
 
 
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT IO STUFF
+<input_statement> ::= scan <left_parenthesis> <expression> <right_parenthesis>;
 
-
-TODO
+<output_statement> ::= print <left_parenthesis> <expression> <right_parenthesis>;
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -105,28 +170,36 @@ TODO
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT "PRIMITIVE" FUNCTIONS OF THE DRONE
 
-
-TODO
+<read_inclination_function> ::= readInclination <left_parenthesis> <right_parenthesis>;
+<read_altitude_function> ::= readAltitude <left_parenthesis> <right_parenthesis>;
+<read_temperature_function> ::= readTemperature <left_parenthesis> <right_parenthesis>;
+<read_acceleration> ::= readAcceleration <left_parenthesis> <right_parenthesis>;
+<turn_on_camera_function> ::= turnOnCamera <left_parenthesis> <boolean> <right_parenthesis>;
+<take_picture_function> ::= takePictures <left_parenthesis> <right_parenthesis>;
+<read_timestamp_function> ::= readTimestamp <left_parenthesis> <right_parenthesis>;
+<connect_to_computer_with_wifi_function> ::= connectToComputer <left_parenthesis> <right_parenthesis>;
 
 --------------------------------------------------------------------------------------------------------------------
 
 
 
+--------------------------------------------------------------------------------------------------------------------
+// "CREATIVE" FUNCTIONS
+
+<do_flip_function> ::= doFlip <left_parenthesis> <char> <right_parenthesis>;
+<takeoff_function> ::= takeoff <left_parenthesis> <right_parenthesis>;
+<land_function> ::= land <left_parenthesis> <right_parenthesis>;
+<emergency_function> ::= emergency <left_parenthesis> <boolean> <right_parenthesis>;
+<up_function> ::= up <left_parenthesis> (<integer> | <float>);
+<down_function> ::= down <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<right_function> ::= right <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<left_function> ::= left <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<forward_function> ::= forward <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<backward_function> ::= backward <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<rotate_clockwise_function> ::= rotateClockwise <left_parenthesis> <boolean>, <integer> <right_parenthesis>;
+<set_speed_function> ::= setSpeed <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
+<get_speed_function> ::= getSpeed <left_parenthesis> <right_parenthesis>;
+<get_battery_function> ::= getBattery <left_parenthesis> <right_parenthesis>; 
 
 
-
-
-
-
-
-
-<identifier> ::= <char>(<char>|<digit>)
-
-
-
-
-
-
-
-
-<int_expression> ::= <identifier><assignmentoperator><int>
+--------------------------------------------------------------------------------------------------------------------
