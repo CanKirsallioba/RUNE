@@ -3,20 +3,32 @@
 --------------------------------------------------------------------------------------------------------------------
 // ABOUT PROGRAM
 
-<program> ::= <statement_list> 
+<program> ::= <statement_list>
+
 <statement_list> ::= <statement>
                     | <statement_list> <statement>
-<statement> ::= <comment> | <expression>; | <loop> |  
-<conditional> | <function_description>
-<comment> ::= <comment_sign><form><comment_sign>
-<form> ::= <identifier><form> | <identifier>
+
+<statement> ::= <comment>
+               | <expression>; 
+               | <loop>
+               | <conditional>
+               | <function_description>
+
+<comment> ::= <comment_sign> <form> <comment_sign>
+
+<form> ::= <identifier> <form> 
+          | <identifier>
 --------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT GENERAL TYPES AND DEFAULT STUFF
 
-<char> ::= <letter> | <digit>
-<letter> ::= <lowercase_letter> | <uppercase_letter>
+<char> ::= <letter>
+         | <digit>
+
+<letter> ::= <lowercase_letter>
+           | <uppercase_letter>
+
 <lowercase_letter> ::= a | b | c ... | z
 <uppercase_letter> ::= A | B | C ... | Z
 
@@ -26,11 +38,16 @@
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-<int> ::= <int><digit> | <digit>
-<integer> ::= <sign><int> | <int>
+<int> ::= <int> <digit> 
+        | <digit>
+<integer> ::= <sign> <int> 
+            | <int>
 
-<fl> ::= <int><dot><int> | <dot><int> 
-<float> ::= <sign><fl> | <fl>               
+<fl> ::= <int> <dot> <int> 
+        | <dot> <int>
+
+<float> ::= <sign> <fl> 
+          | <fl>               
 
 <boolean> ::= TRUE | FALSE
 
@@ -70,9 +87,10 @@
 <loop> ::= <while> 
         | <for>
         | <do_while>
-<while> ::= while <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
-<for> ::= for <left_parenthesis><for_loop_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
-<do_while> ::= do <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <left_parenthesis> while <left_regular><logical_expression><right_parenthesis>;
+
+<while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<do_while> ::= do <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <left_parenthesis> while <left_regular> <logical_expression> <right_parenthesis>;
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -83,9 +101,9 @@
 //ABOUT CONDITIONALS
 
 <conditional> ::= <if>
-<if> ::= if <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis><else> 
-        | if <left_parenthesis><logical_expression><right_parenthesis><left_curly_parenthesis><statement_list><right_curly_parenthesis>
-<else> ::= else <left_curly_parenthesis><statement_list><right_curly_parenthesis>
+<if> ::= if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <else> 
+        | if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<else> ::= else <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -136,7 +154,8 @@
 --------------------------------------------------------------------------------------------------------------------
 //ABOUT FUNCTIONS
 
-<return_type> ::= <void> | <data_type>
+<return_type> ::= <void> 
+                | <data_type>
 
 <function_definition> ::= <return_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 
