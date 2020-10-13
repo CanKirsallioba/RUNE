@@ -86,11 +86,9 @@
 
 <loop> ::= <while> 
         | <for>
-        | <do_while>
 
 <while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
-<do_while> ::= do <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <left_parenthesis> while <left_regular> <logical_expression> <right_parenthesis>;
 
 --------------------------------------------------------------------------------------------------------------------
 

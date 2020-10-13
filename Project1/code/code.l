@@ -3,41 +3,74 @@ digit [0-9]
 char [A-Za-z0-9]
 %%
 
-[+-]?(digit)+ printf("INT ");
+[+-]?(digit)+           printf("INT ");
 [+-]?(digit)*\.(digit)+ printf("FLOAT ");
-digit printf("DIGIT ");
+digit                   printf("DIGIT ");
 
-char printf("CHAR ");
-TRUE printf("TRUE ");
-FALSE printf("FALSE ");
+char                    printf("CHAR ");
+TRUE                    printf("TRUE ");
+FALSE                   printf("FALSE ");
 
-[A-Za-z]+(char)* printf("IDENTIFIER ");
+if                      printf("IF ");
+else                    printf("ELSE ");
+while                   printf("WHILE ");
+for                     printf("FOR ");
 
-$ printf("COMMENT_SIGN ");
-<- printf("ASSIGNMENT_OPERATOR ");
+scan                    printf("SCAN ");
+print                   printf("PRINT ");
+
+readInclination         printf("READ_INCLINATION ");
+readAltitude            printf("READ_ALTITUDE ");
+readTemperature         printf("READ_TEMPERATURE ");
+readAcceleration        printf("READ_ACCELERATION ");
+turnOnCamera            printf("TURN_ON_CAMERA ");
+takePicture             printf("TAKE_PICTURE ");
+readTimestamp           printf("READ_TIMESTAMP ");
+connectToComputer       printf("CONNECT_TO_COMPUTER ");
+
+doFlip                  printf("DO_FLIP ");
+takeOff                 printf("TAKEOFF ");
+land                    printf("LAND ");
+emergency               printf("EMERGENCY ");
+up                      printf("UP ");
+down                    printf("DOWN ");
+right                   printf("RIGHT ");
+left                    printf("LEFT ");
+forward                 printf("FORWARD");
+backward                printf("BACKWARD");
+rotateClockwise         printf("ROTATE_CLOCKWISE");
+setSpeed                printf("SET_SPEED");
+getSpeed                printf("GET_SPEED");
+getBattery              printf("GET_BATTERY");
 
 
-( printf("LP ");
-) printf("RP ");
-{ printf("LCP ");
-} printf("RCP ");
+[A-Za-z]+(char)*        printf("IDENTIFIER ");
 
-> printf("GREATER_THAN ");
-< printf("SMALLER_THAN ");
-<= printf("GREATER_OR_EQUAL ");
->= printf("SMALLER_OR_EQUAL ");
+$                       printf("COMMENT_SIGN ");
+<-                      printf("ASSIGNMENT_OPERATOR ");
 
-+ printf("PLUS ");
-- printf("MINUS ");
-* printf("MULTIPLICATION ");
-/ printf("DIVISION ");
-% printf("REMAINDER ");
-** printf("EXPONANTIATION ");
-&& printf("AND ");
-|| printf("OR ");
-== printf("EQUAL ");
-!= printf("NOT_EQUAL ");
-; printf("SEMICOLON");
+
+(                       printf("LP ");
+)                       printf("RP ");
+{                       printf("LCP ");
+}                       printf("RCP ");
+
+>                       printf("GREATER_THAN ");
+<                       printf("SMALLER_THAN ");
+<=                      printf("GREATER_OR_EQUAL ");
+>=                      printf("SMALLER_OR_EQUAL ");
+
++                       printf("PLUS ");
+-                       printf("MINUS ");
+*                       printf("MULTIPLICATION ");
+/                       printf("DIVISION ");
+%                       printf("REMAINDER ");
+**                      printf("EXPONANTIATION ");
+&&                      printf("AND ");
+||                      printf("OR ");
+==                      printf("EQUAL ");
+!=                      printf("NOT_EQUAL ");
+;                       printf("SEMICOLON");
 
 
 
