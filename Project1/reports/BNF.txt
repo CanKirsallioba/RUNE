@@ -1,7 +1,4 @@
-//Part A - Language Design
-
---------------------------------------------------------------------------------------------------------------------
-// ABOUT PROGRAM
+;Program Definition
 
 <program> ::= <statement_list>
 
@@ -12,16 +9,14 @@
                | <expression>; 
                | <loop>
                | <conditional>
-               | <function_description>
+               | <function_definition>
 
 <comment> ::= <comment_sign> <form> <comment_sign>
 
 <form> ::= <identifier> <form> 
           | <identifier>
---------------------------------------------------------------------------------------------------------------------
 
---------------------------------------------------------------------------------------------------------------------
-//ABOUT GENERAL TYPES AND DEFAULT STUFF
+
 
 <char> ::= <letter>
          | <digit>
@@ -35,6 +30,8 @@
 <assignment_operator> ::= <-         // so that it is different than other languages.
 
 <comment_sign> ::= "$"
+
+2) Types and Constants
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
@@ -76,40 +73,28 @@
 <identifier> ::= <letter> 
                 | <identifier> <char>
 
---------------------------------------------------------------------------------------------------------------------
 
 
 
-
---------------------------------------------------------------------------------------------------------------------
-//ABOUT LOOPS (WHILE, FOR, DO WHILE)
+3) Loop Definition
 
 <loop> ::= <while> 
         | <for>
 
 <while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
-
---------------------------------------------------------------------------------------------------------------------
-
+<for_loop_expression> ::= <expression> ; <boolean>; <expression>
 
 
 
---------------------------------------------------------------------------------------------------------------------
-//ABOUT CONDITIONALS
+4) Conditional Definition
 
 <conditional> ::= <if>
 <if> ::= if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <else> 
         | if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <else> ::= else <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 
---------------------------------------------------------------------------------------------------------------------
-
-
-
-
---------------------------------------------------------------------------------------------------------------------
-//ABOUT EXPRESSIONS AND BLOCKS
+5) Expressions
 
 <int_expression> ::= <integer>
 <float_expression> ::= <float>
@@ -146,11 +131,7 @@
         | <logical_expression> 
 
 
-
---------------------------------------------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------------------------------------------
-//ABOUT FUNCTIONS
+6) Function Definition
 
 <return_type> ::= <void> 
                 | <data_type>
@@ -162,26 +143,19 @@
             | <char>
             | <boolean>
             | <identifier>
-            | <function_expression>read_inclination_function
+            | <function_expression>
 
 <argument_list> ::= <argument>, <argument_list> 
                 | <argument> 
 
---------------------------------------------------------------------------------------------------------------------
 
+7) Input Output Definition
 
---------------------------------------------------------------------------------------------------------------------
-//ABOUT IO STUFF
 <input_statement> ::= scan <left_parenthesis> <expression> <right_parenthesis>;
 
 <output_statement> ::= print <left_parenthesis> <expression> <right_parenthesis>;
 
---------------------------------------------------------------------------------------------------------------------
-
-
-
---------------------------------------------------------------------------------------------------------------------
-//ABOUT "PRIMITIVE" FUNCTIONS OF THE DRONE
+8) Drone Functions 
 
 <read_inclination_function> ::= readInclination <left_parenthesis> <right_parenthesis>;
 <read_altitude_function> ::= readAltitude <left_parenthesis> <right_parenthesis>;
@@ -192,14 +166,11 @@
 <read_timestamp_function> ::= readTimestamp <left_parenthesis> <right_parenthesis>;
 <connect_to_computer_with_wifi_function> ::= connectToComputer <left_parenthesis> <right_parenthesis>;
 
---------------------------------------------------------------------------------------------------------------------
 
 
+9) Our Creative Functions
 
---------------------------------------------------------------------------------------------------------------------
-// "CREATIVE" FUNCTIONS
-
-<do_flip_function> ::= doFlip <left_parenthesis> <char> <right_parenthesis>;
+<do_flip_function> ::= doFlip <left_parenthesis> <boolean> <right_parenthesis>;
 <takeoff_function> ::= takeoff <left_parenthesis> <right_parenthesis>;
 <land_function> ::= land <left_parenthesis> <right_parenthesis>;
 <emergency_function> ::= emergency <left_parenthesis> <boolean> <right_parenthesis>;
@@ -213,6 +184,3 @@
 <set_speed_function> ::= setSpeed <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
 <get_speed_function> ::= getSpeed <left_parenthesis> <right_parenthesis>;
 <get_battery_function> ::= getBattery <left_parenthesis> <right_parenthesis>; 
-
-
---------------------------------------------------------------------------------------------------------------------
