@@ -1,4 +1,4 @@
-;Program Definition
+1) Program Definition
 
 <program> ::= <statement_list>
 

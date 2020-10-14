@@ -1,5 +1,13 @@
 $ This file includes meaningful example programs that are written in RUNE.
 
+$ The user defines a function for checking the drone's battery and land it if the battery is low
+void batteryCheck() {
+    if (getBattery() <= 10) {
+        land();
+    } else {
+        rotateClockwise(TRUE, 360);
+    }
+}
 
 $ The drone takes off
 takeoff();
@@ -10,14 +18,19 @@ up(30);
 $ Count variable is defined and initialized to 0.
 int count <- 0;
 
-$ The drone does 5 front flips.
-while (count <= 5) {
-    doFlip(TRUE);
-    count <- count + 1;
+$ First, the drone's altitude is checked. If it has enough altitude, it does 5 front flips
+
+if (readAltitude() > 20){
+    while (count <= 5) {
+        doFlip(TRUE);
+        count <- count + 1;
+    }
+} else {
+    up(20); 
 }
 
 $ At this point the user may want to check the battery.
-getBattery();
+batteryCheck();
 
 $ Then the user may want to take a picture, but the altitude of the drone may be too much.
 turnOnCamera(TRUE);
