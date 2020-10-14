@@ -59,3 +59,4 @@ getBattery                  printf("GET_BATTERY");
 \=\=                        printf("EQUAL ");
 \!\=                        printf("NOT_EQUAL ");
 \;                          printf("SEMICOLON ");
+\n                          printf("");
