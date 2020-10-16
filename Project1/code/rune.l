@@ -3,7 +3,6 @@ digit [0-9]
 alphanumeric [A-Za-z0-9]
 char '{alphanumeric}'
 %%
-{digit}                     printf("DIGIT ");
 [+-]?{digit}+               printf("INT ");
 [+-]?{digit}*\.{digit}+     printf("FLOAT ");
 {char}                      printf("CHAR ");
@@ -31,12 +30,12 @@ up                          printf("UP ");
 down                        printf("DOWN ");
 right                       printf("RIGHT ");
 left                        printf("LEFT ");
-forward                     printf("FORWARD");
-backward                    printf("BACKWARD");
-rotateClockwise             printf("ROTATE_CLOCKWISE");
-setSpeed                    printf("SET_SPEED");
-getSpeed                    printf("GET_SPEED");
-getBattery                  printf("GET_BATTERY");
+forward                     printf("FORWARD ");
+backward                    printf("BACKWARD ");
+rotateClockwise             printf("ROTATE_CLOCKWISE ");
+setSpeed                    printf("SET_SPEED ");
+getSpeed                    printf("GET_SPEED ");
+getBattery                  printf("GET_BATTERY ");
 [A-Za-z]+{alphanumeric}*    printf("IDENTIFIER ");
 \$[^\$]*\$                      printf("COMMENT_LINE ");
 \<\-                        printf("ASSIGNMENT_OPERATOR ");
@@ -46,8 +45,8 @@ getBattery                  printf("GET_BATTERY");
 \}                          printf("RCP ");
 \>                          printf("GREATER_THAN ");
 \<                          printf("SMALLER_THAN ");
-\<\=                        printf("GREATER_OR_EQUAL ");
-\>\=                        printf("SMALLER_OR_EQUAL ");
+\>\=                        printf("GREATER_OR_EQUAL ");
+\<\=                        printf("SMALLER_OR_EQUAL ");
 \+                          printf("PLUS ");
 \-                          printf("MINUS ");
 \*                          printf("MULTIPLICATION ");
@@ -59,4 +58,4 @@ getBattery                  printf("GET_BATTERY");
 \=\=                        printf("EQUAL ");
 \!\=                        printf("NOT_EQUAL ");
 \;                          printf("SEMICOLON ");
-\n                          printf("");
+\,                          printf("COMMA ");

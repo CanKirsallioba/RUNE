@@ -10,7 +10,7 @@ void batteryCheck() {
 }
 
 $ The drone takes off $
-takeoff();
+takeOff();
 
 $ It flies upward for 30 meters $
 up(30);
@@ -40,7 +40,7 @@ $ The drone decreases its altitude by 10 meters. $
 down(10);
 
 $ The user takes a picture. $
-takePictures();
+takePicture();
 
 $ The user may also want to check the time to remember when the photo was taken. $
 readTimestamp();
@@ -58,7 +58,7 @@ emergency(TRUE);
 $ Since emergency is called and the engine is stopped, the drone crashes to the ground. $
 $ The user checks the drone to make sure it is still working. $
 
-takeoff();
+takeOff();
 up(5);
 down(4.5);
 
