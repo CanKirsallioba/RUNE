@@ -7,6 +7,8 @@ int                         printf("INT_RESERVED ");
 float                       printf("FLOAT_RESERVED ");
 char                        printf("CHAR_RESERVED ");
 boolean                     printf("BOOLEAN_RESERVED ");
+void                        printf("VOID_RESERVED ");
+return                      printf("RETURN_RESERVED ");
 [+-]?{digit}+               printf("INT ");
 [+-]?{digit}*\.{digit}+     printf("FLOAT ");
 {char}                      printf("CHAR ");

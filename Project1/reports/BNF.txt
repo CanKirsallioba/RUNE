@@ -52,6 +52,8 @@
 <float_reserved> ::= “float”
 <char_reserved> ::= “char”
 <boolean_reserved> ::= “boolean”
+<void_reserved> ::= "void"
+<return_reserved> ::= "return>
 
 <space> ::= 
 
