@@ -1,5 +1,4 @@
 $ This file includes meaningful example programs that are written in RUNE. $
-
 $ The user defines a function for checking the drone's battery and land it if the battery is low $
 void batteryCheck() {
     if (getBattery() <= 10) {
