@@ -3,6 +3,10 @@ digit [0-9]
 alphanumeric [A-Za-z0-9]
 char '{alphanumeric}'
 %%
+int                         printf("INT_RESERVED ");
+float                       printf("FLOAT_RESERVED ");
+char                        printf("CHAR_RESERVED ");
+boolean                     printf("BOOLEAN_RESERVED ");
 [+-]?{digit}+               printf("INT ");
 [+-]?{digit}*\.{digit}+     printf("FLOAT ");
 {char}                      printf("CHAR ");
