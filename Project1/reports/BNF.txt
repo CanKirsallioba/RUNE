@@ -34,6 +34,7 @@
 
 <comment_sign> ::= "$"
 
+
 2) Types and Constants
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
@@ -97,13 +98,13 @@
 <for_loop_expression> ::= <expression> ; <boolean>; <expression>
 
 
-
 4) Conditional Definition
 
 <conditional> ::= <if>
 <if> ::= if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <else> 
         | if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <else> ::= else <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+
 
 5) Expressions
 
@@ -168,11 +169,12 @@
 
 <empty> ::=
 
+
 7) Input Output Definition
 
 <input_statement> ::= scan <left_parenthesis> <expression> <right_parenthesis>;
-
 <output_statement> ::= print <left_parenthesis> <expression> <right_parenthesis>;
+
 
 8) Drone Functions 
 
@@ -184,7 +186,6 @@
 <take_picture_function> ::= takePictures <left_parenthesis> <right_parenthesis>;
 <read_timestamp_function> ::= readTimestamp <left_parenthesis> <right_parenthesis>;
 <connect_to_computer_with_wifi_function> ::= connectToComputer <left_parenthesis> <right_parenthesis>;
-
 
 
 9) Our Creative Functions
