@@ -19,8 +19,6 @@
 <form> ::= <identifier> <form> 
           | <identifier>
 
-
-
 <char> ::= <letter>
           | <digit>
 
@@ -30,25 +28,26 @@
 <lowercase_letter> ::= a | b | c ... | z
 <uppercase_letter> ::= A | B | C ... | Z
 
-<assignment_operator> ::= <-         // so that it is different than other languages.
+<assignment_operator> ::= <-
 
-<comment_sign> ::= "$"
+<comment_sign> ::= $
 
 
 2) Types and Constants
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-<int> ::= <int> <digit> 
-         | <digit>
 <integer> ::= <sign> <int> 
              | <int>
 
-<fl> ::= <int> <dot> <int> 
-        | <dot> <int>
+<int> ::= <int> <digit> 
+         | <digit>
 
 <float> ::= <sign> <fl> 
-           | <fl>               
+           | <fl>     
+
+<fl> ::= <int> <dot> <int> 
+        | <dot> <int>          
 
 <boolean> ::= TRUE | FALSE
 
@@ -57,20 +56,19 @@
                | <char_type>
                | <boolean_type>
 
-<int_type> ::= “int”
-<float_type> ::= “float”
-<char_type> ::= “char”
-<boolean_type> ::= “boolean”
-<void> ::= "void"
-<return> ::= "return"
+<int_type> ::= int
+<float_type> ::= float
+<char_type> ::= char
+<boolean_type> ::= boolean
+<void> ::= void
 
-<left_curly_parenthesis> ::= "{"
-<right_curly_parenthesis> ::= "}"
-<left_parenthesis> ::= "("
-<right_parenthesis> ::= ")"
+<left_curly_parenthesis> ::= {
+<right_curly_parenthesis> ::= }
+<left_parenthesis> ::= (
+<right_parenthesis> ::= )
 
-<greater_than_relation> ::= ">" | ">="
-<smaller_than_relation> ::= "<" | "<=
+<greater_than_relation> ::= > | >=
+<smaller_than_relation> ::= < | <=
 
 <plus_operator> ::= +
 <subtraction_operator> ::= -
@@ -90,11 +88,11 @@
 
 3) Loop Definition
 
-<loop> ::= <while> 
-          | <for>
+<loop> ::= <while_loop> 
+          | <for_loop>
 
-<while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
-<for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<while_loop> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<for_loop> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <for_loop_expression> ::= <expression> ; <boolean>; <expression>
 
 
@@ -107,20 +105,6 @@
 
 
 5) Expressions
-
-<int_expression> ::= <integer>
-<float_expression> ::= <float>
-<function_expression> ::= <identifier> <left_parenthesis> <argument_list> <right_parenthesis>
-<logical_expression> ::= <boolean> 
-                        | (<integer> | <float> | <identifier>) (<greater_than_relation> | <smaller_than_relation>) (<integer> | <float> | <identifier>)
-                        | <logical_expression> <and_operator> <logical_expression>
-                        | <logical_expression> <or_operator> <logical_expression>
-                        | <logical_expression> <equal_operator> <logical_expression>
-                        | <logical_expression> <not_equal_operator> <logical_expression>
-
-<function_call> ::= <function_expression>;
-
-<assignment> ::= <identifier> <assignment_operator> <expression>
 
 <expression> ::= <expr> <plus_operator> <expression2>
                 | <expression> <subtraction_operator> <expression2>
@@ -141,6 +125,20 @@
         | <float_expression> 
         | <function_expression> 
         | <logical_expression> 
+
+<int_expression> ::= <integer>
+<float_expression> ::= <float>
+<function_expression> ::= <identifier> <left_parenthesis> <argument_list> <right_parenthesis>
+<logical_expression> ::= <boolean> 
+                        | (<integer> | <float> | <identifier>) (<greater_than_relation> | <smaller_than_relation>) (<integer> | <float> | <identifier>)
+                        | <logical_expression> <and_operator> <logical_expression>
+                        | <logical_expression> <or_operator> <logical_expression>
+                        | <logical_expression> <equal_operator> <logical_expression>
+                        | <logical_expression> <not_equal_operator> <logical_expression>
+
+<function_call> ::= <function_expression>;
+
+<assignment> ::= <identifier> <assignment_operator> <expression>
 
 
 6) Function Definition
