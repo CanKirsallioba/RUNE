@@ -22,10 +22,10 @@
 
 
 <char> ::= <letter>
-         | <digit>
+          | <digit>
 
 <letter> ::= <lowercase_letter>
-           | <uppercase_letter>
+            | <uppercase_letter>
 
 <lowercase_letter> ::= a | b | c ... | z
 <uppercase_letter> ::= A | B | C ... | Z
@@ -39,22 +39,22 @@
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 <int> ::= <int> <digit> 
-        | <digit>
+         | <digit>
 <integer> ::= <sign> <int> 
-            | <int>
+             | <int>
 
 <fl> ::= <int> <dot> <int> 
         | <dot> <int>
 
 <float> ::= <sign> <fl> 
-          | <fl>               
+           | <fl>               
 
 <boolean> ::= TRUE | FALSE
 
 <data_type> ::= <int_type>
-             | <float_type>
-             | <char_type>
-             | <boolean_type>
+               | <float_type>
+               | <char_type>
+               | <boolean_type>
 
 <int_type> ::= “int”
 <float_type> ::= “float”
@@ -90,7 +90,7 @@
 3) Loop Definition
 
 <loop> ::= <while> 
-        | <for>
+          | <for>
 
 <while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 <for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
@@ -126,15 +126,15 @@
                 | <expression2>
 
 <expression2> ::= <expression2> <multiplication_operator> <expression3>
-                | <expression2> <division_operator> <expression3>
-                | <expression3>
+                 | <expression2> <division_operator> <expression3>
+                 | <expression3>
 
 <expression3> ::= <expression4> <exponentiation_operator> <expression3>
-                | <expression4>
+                 | <expression4>
 
 <expression4> ::= <left_parenthesis> <expression> <right_parenthesis>
-                | <expr>
-                | <identifier>
+                 | <expr>
+                 | <identifier>
 
 <expr> ::= <int_expression> 
         | <float_expression> 
@@ -145,9 +145,9 @@
 6) Function Definition
 
 <function_def> ::= <void_with_return>
-                   | <void_without_return>
-                   | <non_void_func_def>
-                   | <only_return_func_def>
+                  | <void_without_return>
+                  | <non_void_func_def>
+                  | <only_return_func_def>
                         
 <void_with_return> ::= <void> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <void_return_statement> <right_curly_parenthesis>
 <void_without_return> ::= <void> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
@@ -156,15 +156,15 @@
 <only_return_func_def> ::= <data_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <return_statement> <right_curly_parenthesis>
 
 <argument> ::= <integer> 
-            | <float>
-            | <char>
-            | <boolean>
-            | <identifier>
-            | <function_expression>
+              | <float>
+              | <char>
+              | <boolean>
+              | <identifier>
+              | <function_expression>
 
 <argument_list> ::= <argument>, <argument_list> 
-                | <argument> 
-                | <empty>
+                   | <argument> 
+                   | <empty>
 
 <empty> ::=
 
