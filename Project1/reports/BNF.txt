@@ -180,15 +180,15 @@
 <read_altitude_function> ::= readAltitude <left_parenthesis> <right_parenthesis>;
 <read_temperature_function> ::= readTemperature <left_parenthesis> <right_parenthesis>;
 <read_acceleration> ::= readAcceleration <left_parenthesis> <right_parenthesis>;
-<turn_on_camera_function> ::= turnOnCamera <left_parenthesis> <boolean> <right_parenthesis>;
-<take_picture_function> ::= takePictures <left_parenthesis> <right_parenthesis>;
+<set_camera_state_function> ::= setCameraState <left_parenthesis> <boolean> <right_parenthesis>;
+<take_picture_function> ::= takePicture <left_parenthesis> <right_parenthesis>;
 <read_timestamp_function> ::= readTimestamp <left_parenthesis> <right_parenthesis>;
 <connect_to_computer_with_wifi_function> ::= connectToComputer <left_parenthesis> <right_parenthesis>;
 
 
 9) Our Creative Functions
 
-<do_flip_function> ::= doFlip <left_parenthesis> <boolean> <right_parenthesis>;
+<do_flip_function> ::= doFlip <left_parenthesis> <char> <right_parenthesis>;
 <takeoff_function> ::= takeoff <left_parenthesis> <right_parenthesis>;
 <land_function> ::= land <left_parenthesis> <right_parenthesis>;
 <emergency_function> ::= emergency <left_parenthesis> <boolean> <right_parenthesis>;

@@ -1,0 +1,68 @@
+$ This is another example program to demonstrate even more properties and possibilities of RUNE. $
+
+$ The user writes a function to check the overall stats of the drone. $
+void checkStats() {
+    int batteryLevel <- getBattery();
+    int temperature <- readTemperature();
+
+    if (batteryLevel <= 50) {
+        int altitude <- readAltitude();
+        if (altitude <= 60) {
+            print("System functions normally.)
+        } else { 
+            if (temperature <= 10) {
+                print("Weather conditions alert!");
+                emergency(TRUE);
+            } else {
+                print("System functions normally.");
+            }
+        }
+    } else {
+        print("System functions normally.");
+    }
+}
+
+$ The user connects the drone and the computer via wifi. $
+connectToComputer();
+
+$ The drone takes off. $
+takeOff();
+
+$ The drone goes up by 60 meters. $
+up(60);
+setSpeed(5);
+
+$ The user checks the temperature to make sure such high altitude is not going to $
+$ damage the drone's physical components. $
+readTemperature();
+
+
+$ The user checks the overall stats of the drone using the function s/he wrote. $
+checkStats();
+
+$ After the user got the conformation message, s/he decides to go up all the way to the limit height. $
+int currentHeight <- readAltitude();
+int limitHeight <- 100;
+
+for (int height <- current; currentHeight < limitHeight; currentHeight <- currentHeight + 1) {
+    up(1);
+    setSpeed(5);
+}
+
+$ Then the user notices that due to the height of the drone, the winds have drifted the drone away. $
+$ So s/he return the drone to its original place. $
+left(20);
+setSpeed(5);
+
+$ The user decides to let their friend enter the number of flips the drone is going to do. $
+int numberOfFlips <- 0;
+numberOfFlips <- scan();
+
+int counter <- 0;
+while(counter <= numberOfFlips) {
+    doFlip('f');  $ Front flip $
+    doFlip('r');  $ Right flip $
+}
+
+$ The user lands the drone. $
+land();
