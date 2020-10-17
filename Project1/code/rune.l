@@ -1,14 +1,15 @@
+/*rune.l*/
 %option main
 digit [0-9]
 alphanumeric [A-Za-z0-9]
 char '{alphanumeric}'
 %%
-int                         printf("INT_RESERVED ");
-float                       printf("FLOAT_RESERVED ");
-char                        printf("CHAR_RESERVED ");
-boolean                     printf("BOOLEAN_RESERVED ");
-void                        printf("VOID_RESERVED ");
-return                      printf("RETURN_RESERVED ");
+int                         printf("INT_TYPE ");
+float                       printf("FLOAT_TYPE ");
+char                        printf("CHAR_TYPE ");
+boolean                     printf("BOOLEAN_TYPE ");
+void                        printf("VOID_TYPE ");
+return                      printf("RETURN ");
 [+-]?{digit}+               printf("INT ");
 [+-]?{digit}*\.{digit}+     printf("FLOAT ");
 {char}                      printf("CHAR ");
@@ -43,7 +44,7 @@ setSpeed                    printf("SET_SPEED ");
 getSpeed                    printf("GET_SPEED ");
 getBattery                  printf("GET_BATTERY ");
 [A-Za-z]+{alphanumeric}*    printf("IDENTIFIER ");
-\$[^\$]*\$                      printf("COMMENT_LINE ");
+\$[^\$]*\$                  printf("COMMENT_LINE ");
 \<\-                        printf("ASSIGNMENT_OPERATOR ");
 \(                          printf("LP ");
 \)                          printf("RP ");

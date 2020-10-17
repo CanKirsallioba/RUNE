@@ -48,14 +48,12 @@
 
 <boolean> ::= TRUE | FALSE
 
-<int_reserved> ::= “int”
-<float_reserved> ::= “float”
-<char_reserved> ::= “char”
-<boolean_reserved> ::= “boolean”
-<void_reserved> ::= "void"
-<return_reserved> ::= "return>
-
-<space> ::= 
+<int_type> ::= “int”
+<float_type> ::= “float”
+<char_type> ::= “char”
+<boolean_type> ::= “boolean”
+<void> ::= "void"
+<return> ::= "return"
 
 <left_curly_parenthesis> ::= "{"
 <right_curly_parenthesis> ::= "}"
