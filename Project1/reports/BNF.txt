@@ -10,6 +10,9 @@
                | <loop>
                | <conditional>
                | <function_definition>
+                   
+<void_return_statement> ::= return;
+<return_statement> ::= return <expression>;
 
 <comment> ::= <comment_sign> <form> <comment_sign>
 
@@ -48,6 +51,11 @@
 
 <boolean> ::= TRUE | FALSE
 
+<data_type> ::= <int_type>
+             | <float_type>
+             | <char_type>
+             | <boolean_type>
+
 <int_type> ::= “int”
 <float_type> ::= “float”
 <char_type> ::= “char”
@@ -77,8 +85,6 @@
 
 <identifier> ::= <letter> 
                 | <identifier> <char>
-
-
 
 
 3) Loop Definition
@@ -138,10 +144,16 @@
 
 6) Function Definition
 
-<return_type> ::= <void> 
-                | <data_type>
+<function_def> ::= <void_with_return>
+                   | <void_without_return>
+                   | <non_void_func_def>
+                   | <only_return_func_def>
+                        
+<void_with_return> ::= <void> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <void_return_statement> <right_curly_parenthesis>
+<void_without_return> ::= <void> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
 
-<function_definition> ::= <return_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<non_void_func_def> ::= <data_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <return_statement> <right_curly_parenthesis>
+<only_return_func_def> ::= <data_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <return_statement> <right_curly_parenthesis>
 
 <argument> ::= <integer> 
             | <float>
