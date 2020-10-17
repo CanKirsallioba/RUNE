@@ -164,7 +164,9 @@
 
 <argument_list> ::= <argument>, <argument_list> 
                 | <argument> 
+                | <empty>
 
+<empty> ::=
 
 7) Input Output Definition
 
