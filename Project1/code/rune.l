@@ -3,6 +3,7 @@
 digit [0-9]
 alphanumeric [A-Za-z0-9]
 char '{alphanumeric}'
+bool (TRUE|FALSE)
 %%
 int                         printf("INT_TYPE ");
 float                       printf("FLOAT_TYPE ");
@@ -13,8 +14,7 @@ return                      printf("RETURN ");
 [+-]?{digit}+               printf("INT ");
 [+-]?{digit}*\.{digit}+     printf("FLOAT ");
 {char}                      printf("CHAR ");
-TRUE                        printf("TRUE ");
-FALSE                       printf("FALSE ");
+{bool}                      printf("BOOLEAN ");
 if                          printf("IF ");
 else                        printf("ELSE ");
 while                       printf("WHILE ");
