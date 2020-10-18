@@ -89,13 +89,11 @@
                  | <expr>
                  | <identifier>
 
-<expr> ::= <int_expression> 
-        | <float_expression> 
-        | <function_expression> 
-        | <logical_expression> 
+<expr> ::= <integer>
+          | <float> 
+          | <function_expression> 
+          | <logical_expression>
 
-<int_expression> ::= <integer>
-<float_expression> ::= <float>
 <function_expression> ::= <identifier> LP <argument_list> RP
 <logical_expression> ::= <boolean> 
                         | (<integer> | <float> | <identifier>) (GREATER_THAN | SMALLER_THAN | GREATER_OR_EQUAL | SMALLER_OR_EQUAL) (<integer> | <float> | <identifier>)
