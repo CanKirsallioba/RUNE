@@ -5,187 +5,166 @@
 <statement_list> ::= <statement>
                     | <statement_list> <statement>
 
-<statement> ::= <comment>
+<statement> ::= COMMENT
                | <expression>; 
                | <loop>
                | <conditional>
                | <function_definition>
-
-<comment> ::= <comment_sign> <form> <comment_sign>
+                   
+<void_return_statement> ::= RETURN;
+<return_statement> ::= RETURN <expression>;
 
 <form> ::= <identifier> <form> 
           | <identifier>
 
-
-
 <char> ::= <letter>
-         | <digit>
+          | <digit>
 
 <letter> ::= <lowercase_letter>
-           | <uppercase_letter>
+            | <uppercase_letter>
 
 <lowercase_letter> ::= a | b | c ... | z
 <uppercase_letter> ::= A | B | C ... | Z
 
-<assignment_operator> ::= <-         // so that it is different than other languages.
-
-<comment_sign> ::= "$"
 
 2) Types and Constants
 
 <digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-<int> ::= <int> <digit> 
-        | <digit>
 <integer> ::= <sign> <int> 
-            | <int>
+             | <int>
 
-<fl> ::= <int> <dot> <int> 
-        | <dot> <int>
+<int> ::= <int> <digit> 
+         | <digit>
 
 <float> ::= <sign> <fl> 
-          | <fl>               
+           | <fl>     
+
+<fl> ::= <int> DOT <int> 
+        | DOT <int>          
 
 <boolean> ::= TRUE | FALSE
 
-<int_reserved> ::= “int”
-<float_reserved> ::= “float”
-<char_reserved> ::= “char”
-<boolean_reserved> ::= “boolean”
-
-<space> ::= 
-
-<left_curly_parenthesis> ::= "{"
-<right_curly_parenthesis> ::= "}"
-<left_parenthesis> ::= "("
-<right_parenthesis> ::= ")"
-
-<greater_than_relation> ::= ">" | ">="
-<smaller_than_relation> ::= "<" | "<=
-
-<plus_operator> ::= +
-<subtraction_operator> ::= -
-<multiplication_operator> ::= *
-<division_operator> ::= /
-<remainder_operator> ::= %
-<exponentiation_operator> ::= **
-
-<and_operator> ::= &&
-<or_operator> ::= ||
-<equal_operator> ::= ==
-<not_equal_operator> ::= !=
+<data_type> ::= INT_TYPE
+               | FLOAT_TYPE
+               | CHAR_TYPE
+               | BOOLEAN_TYPE
 
 <identifier> ::= <letter> 
                 | <identifier> <char>
 
 
-
-
 3) Loop Definition
 
-<loop> ::= <while> 
-        | <for>
+<loop> ::= <while_loop> 
+          | <for_loop>
 
-<while> ::= while <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
-<for> ::= for <left_parenthesis> <for_loop_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<while_loop> ::= WHILE LP <logical_expression> RP LCB <statement_list> RCB
+<for_loop> ::= FOR LP <for_loop_expression> RP LCB <statement_list> RCB
 <for_loop_expression> ::= <expression> ; <boolean>; <expression>
-
 
 
 4) Conditional Definition
 
 <conditional> ::= <if>
-<if> ::= if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis> <else> 
-        | if <left_parenthesis> <logical_expression> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
-<else> ::= else <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<if> ::= IF LP <logical_expression> RP LCB <statement_list> RCB <else> 
+        | IF LP <logical_expression> RP LCB <statement_list> RCB
+<else> ::= ELSE LCB <statement_list> RCB
+
 
 5) Expressions
 
-<int_expression> ::= <integer>
-<float_expression> ::= <float>
-<function_expression> ::= <identifier> <left_parenthesis> <argument_list> <right_parenthesis>
-<logical_expression> ::= <boolean> 
-                        | (<integer> | <float> | <identifier>) (<greater_than_relation> | <smaller_than_relation>) (<integer> | <float> | <identifier>)
-                        | <logical_expression> <and_operator> <logical_expression>
-                        | <logical_expression> <or_operator> <logical_expression>
-                        | <logical_expression> <equal_operator> <logical_expression>
-                        | <logical_expression> <not_equal_operator> <logical_expression>
-
-<function_call> ::= <function_expression>;
-
-<assignment> ::= <identifier> <assignment_operator> <expression>
-
-<expression> ::= <expr> <plus_operator> <expression2>
-                | <expression> <subtraction_operator> <expression2>
+<expression> ::= <expr> PLUS <expression2>
+                | <expression> MINUS <expression2>
                 | <expression2>
 
-<expression2> ::= <expression2> <multiplication_operator> <expression3>
-                | <expression2> <division_operator> <expression3>
-                | <expression3>
+<expression2> ::= <expression2> MULTIPLICATION <expression3>
+                 | <expression2> DIVISION <expression3>
+                 | <expression3>
 
-<expression3> ::= <expression4> <exponentiation_operator> <expression3>
-                | <expression4>
+<expression3> ::= <expression4> EXPONENTIATION <expression3>
+                 | <expression4>
 
-<expression4> ::= <left_parenthesis> <expression> <right_parenthesis>
-                | <expr>
-                | <identifier>
+<expression4> ::= LP <expression> RP
+                 | <expr>
+                 | <identifier>
 
 <expr> ::= <int_expression> 
         | <float_expression> 
         | <function_expression> 
         | <logical_expression> 
 
+<int_expression> ::= <integer>
+<float_expression> ::= <float>
+<function_expression> ::= <identifier> LP <argument_list> RP
+<logical_expression> ::= <boolean> 
+                        | (<integer> | <float> | <identifier>) (GREATER_THAN | SMALLER_THAN | GREATER_OR_EQUAL | SMALLER_OR_EQUAL) (<integer> | <float> | <identifier>)
+                        | <logical_expression> AND <logical_expression>
+                        | <logical_expression> OR <logical_expression>
+                        | <logical_expression> EQUAL <logical_expression>
+                        | <logical_expression> NOT_EQUAL <logical_expression>
+
+<function_call> ::= <function_expression>;
+
+<assignment> ::= <identifier> ASSIGNMENT_OPERATOR <expression>
+
 
 6) Function Definition
 
-<return_type> ::= <void> 
-                | <data_type>
+<function_def> ::= <void_with_return>
+                  | <void_without_return>
+                  | <non_void_func_def>
+                  | <only_return_func_def>
+                        
+<void_with_return> ::= VOID_TYPE <identifier> LP <argument_list> RP LCB <statement_list> <void_return_statement> RCB
+<void_without_return> ::= VOID_TYPE <identifier> LP <argument_list> RP LCB <statement_list> RCB
 
-<function_definition> ::= <return_type> <identifier> <left_parenthesis> <argument_list> <right_parenthesis> <left_curly_parenthesis> <statement_list> <right_curly_parenthesis>
+<non_void_func_def> ::= <data_type> <identifier> LP <argument_list> RP LCB <statement_list> <return_statement> RCB
+<only_return_func_def> ::= <data_type> <identifier> LP <argument_list> RP LCB <return_statement> RCB
 
 <argument> ::= <integer> 
-            | <float>
-            | <char>
-            | <boolean>
-            | <identifier>
-            | <function_expression>
+              | <float>
+              | <char>
+              | <boolean>
+              | <identifier>
+              | <function_expression>
 
 <argument_list> ::= <argument>, <argument_list> 
-                | <argument> 
+                   | <argument> 
+                   | empty
 
 
 7) Input Output Definition
 
-<input_statement> ::= scan <left_parenthesis> <expression> <right_parenthesis>;
+<input_statement> ::= SCAN LP <expression> RP;
+<output_statement> ::= PRINT LP <expression> RP;
 
-<output_statement> ::= print <left_parenthesis> <expression> <right_parenthesis>;
 
 8) Drone Functions 
 
-<read_inclination_function> ::= readInclination <left_parenthesis> <right_parenthesis>;
-<read_altitude_function> ::= readAltitude <left_parenthesis> <right_parenthesis>;
-<read_temperature_function> ::= readTemperature <left_parenthesis> <right_parenthesis>;
-<read_acceleration> ::= readAcceleration <left_parenthesis> <right_parenthesis>;
-<turn_on_camera_function> ::= turnOnCamera <left_parenthesis> <boolean> <right_parenthesis>;
-<take_picture_function> ::= takePictures <left_parenthesis> <right_parenthesis>;
-<read_timestamp_function> ::= readTimestamp <left_parenthesis> <right_parenthesis>;
-<connect_to_computer_with_wifi_function> ::= connectToComputer <left_parenthesis> <right_parenthesis>;
-
+<read_inclination_function> ::= READ_INCLINATION LP RP;
+<read_altitude_function> ::= READ_ALTITUDE LP RP;
+<read_temperature_function> ::= READ_TEMPERATURE LP RP;
+<read_acceleration_function> ::= READ_ACCELERATION LP RP;
+<set_camera_state_function> ::= SET_CAMERA_STATE LP <boolean> RP;
+<take_picture_function> ::= TAKE_PICTURE LP RP;
+<read_timestamp_function> ::= READ_TIMESTAMP LP RP;
+<connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP;
 
 
 9) Our Creative Functions
 
-<do_flip_function> ::= doFlip <left_parenthesis> <boolean> <right_parenthesis>;
-<takeoff_function> ::= takeoff <left_parenthesis> <right_parenthesis>;
-<land_function> ::= land <left_parenthesis> <right_parenthesis>;
-<emergency_function> ::= emergency <left_parenthesis> <boolean> <right_parenthesis>;
-<up_function> ::= up <left_parenthesis> (<integer> | <float>);
-<down_function> ::= down <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<right_function> ::= right <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<left_function> ::= left <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<forward_function> ::= forward <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<backward_function> ::= backward <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<rotate_clockwise_function> ::= rotateClockwise <left_parenthesis> <boolean>, <integer> <right_parenthesis>;
-<set_speed_function> ::= setSpeed <left_parenthesis> (<integer> | <float>) <right_parenthesis>;
-<get_speed_function> ::= getSpeed <left_parenthesis> <right_parenthesis>;
-<get_battery_function> ::= getBattery <left_parenthesis> <right_parenthesis>; 
+<do_flip_function> ::= DO_FLIP LP <char> RP;
+<takeoff_function> ::= TAKEOFF LP RP;
+<land_function> ::= LAND LP RP;
+<emergency_function> ::= EMERGENCY LP <boolean> RP;
+<up_function> ::= UP LP (<integer> | <float>);
+<down_function> ::= DOWN LP (<integer> | <float>) RP;
+<right_function> ::= RIGHT LP (<integer> | <float>) RP;
+<left_function> ::= LEFT LP (<integer> | <float>) RP;
+<forward_function> ::= FORWARD LP (<integer> | <float>) RP;
+<backward_function> ::= BACKWARD LP (<integer> | <float>) RP;
+<rotate_clockwise_function> ::= ROTATE_CLOCKWISE LP <boolean>, <integer> RP;
+<set_speed_function> ::= SET_SPEED LP (<integer> | <float>) RP;
+<get_speed_function> ::= GET_SPEED LP RP;
+<get_battery_function> ::= GET_BATTERY LP RP; 
