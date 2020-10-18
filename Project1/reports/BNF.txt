@@ -150,7 +150,7 @@
 <connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP;
 
 
-9) Our Creative Functions
+9) Our Extra Functions
 
 <do_flip_function> ::= DO_FLIP LP <char> RP;
 <takeoff_function> ::= TAKEOFF LP RP;
