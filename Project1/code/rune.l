@@ -44,7 +44,11 @@ setSpeed                    printf("SET_SPEED ");
 getSpeed                    printf("GET_SPEED ");
 getBattery                  printf("GET_BATTERY ");
 [A-Za-z]+{alphanumeric}*    printf("IDENTIFIER ");
+<<<<<<< HEAD
 \$[^\$]*\$                  printf("COMMENT ");
+=======
+\$[^\$]*\$                  printf("COMMENT_LINE ");
+>>>>>>> f803189736b1775957143c1de6669e92724c5726
 \<\-                        printf("ASSIGNMENT_OPERATOR ");
 \(                          printf("LP ");
 \)                          printf("RP ");
