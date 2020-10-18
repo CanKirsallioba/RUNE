@@ -59,7 +59,7 @@ getBattery                  printf("GET_BATTERY ");
 \*                          printf("MULTIPLICATION ");
 \/                          printf("DIVISION ");
 \%                          printf("REMAINDER ");
-\*\*                        printf("EXPONANTIATION ");
+\*\*                        printf("EXPONENTIATION ");
 \&\&                        printf("AND ");
 \|\|                        printf("OR ");
 \=\=                        printf("EQUAL ");
