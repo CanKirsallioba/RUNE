@@ -80,6 +80,7 @@
 
 <expression2> ::= <expression2> MULTIPLICATION <expression3>
                  | <expression2> DIVISION <expression3>
+                 | <expression2> REMAINDER <expression3>
                  | <expression3>
 
 <expression3> ::= <expression4> EXPONENTIATION <expression3>
