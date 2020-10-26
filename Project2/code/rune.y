@@ -33,6 +33,10 @@ data_type ::= INT_TYPE
 loop ::= while_loop
          | for_loop                          
 
+
+while_loop : WHILE LP logical_expression RP LCB statement_list RCB
+
+logical_expression :   
                 
 %%
 #include "rune.l"
