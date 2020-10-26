@@ -1,5 +1,6 @@
 /*rune.y*/
 %{
+    int yylex(void);
     extern int yylineno;
     void yyerror(char* s);
 }%
@@ -22,10 +23,16 @@ statement
                 
 %%
 #include "rune.l"
+
 void yyerror(char* arr) {
-    fprintf(stdout, "Line %d: %s\n", lineCount,arr);
+    fprintf(stdout, "Syntax error on line %d: %s\n", lineCount,arr);  // Also give the code that the error is originating from
 }
+
 main() {
     yyparse();
+    if (yynerrs == 0) {
+	    printf("Input program is valid\n");
+	}
+    return 0;
 }
 

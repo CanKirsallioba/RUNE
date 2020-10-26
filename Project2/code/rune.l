@@ -1,5 +1,8 @@
 /*rune.l*/
-%option main
+%{
+void yyerror(char *);
+%}
+
 %option yylineno
 digit [0-9]
 alphanumeric [A-Za-z0-9]
