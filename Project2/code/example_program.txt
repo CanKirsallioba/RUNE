@@ -1,0 +1,76 @@
+$ This file includes meaningful example programs that are written in RUNE. $
+
+$ The user connects the drone and the computer via wifi. $
+connectToComputer();
+
+$ The user defines a function for checking the drone's battery and land it if the battery is low $
+void batteryCheck() {
+    if (getBattery() <= 10) {
+        land();
+    } else {
+        rotateClockwise(TRUE, 360);
+    }
+}
+
+$ The drone takes off $
+takeOff();
+
+$ It flies upward for 30 meters $
+up(30);
+setSpeed(5);
+
+$ Count variable is defined and initialized to 0. $
+int count <- 0;
+
+$ First, the drone's altitude is checked. If it has enough altitude, it does 5 front flips $
+
+if (readAltitude() > 20){
+    while (count <= 5) {
+        doFlip('f');
+        count <- count + 1;
+    }
+} else {
+    up(20); 
+    setSpeed(5);
+}
+
+$ At this point the user may want to check the battery. $
+batteryCheck();
+
+$ Then the user may want to take a picture, but the altitude of the drone may be too much. $
+turnOnCamera(TRUE);
+readAltitude();
+
+$ The drone decreases its altitude by 10 meters. $
+down(10);
+setSpeed(5);
+
+$ The user takes a picture. $
+takePicture();
+
+$ The user may also want to check the time to remember when the photo was taken. $
+readTimestamp();
+
+$ Then the user may want to move the drone forward by 10.4 meters to fly around a bit more. $
+forward(10.4);
+setSpeed(5);
+
+$ After all the flying when the user wants to land the drone he or she rotates the drone. $
+rotateClockwise(TRUE, 180);
+forward(10.4);
+setSpeed(5);
+
+$ The user sees a pack of birds advancing towards the drone, he or she panics and calls the emergency function. $
+emergency(TRUE);
+
+$ Since emergency is called and the engine is stopped, the drone crashes to the ground. $
+$ The user checks the drone to make sure it is still working. $
+
+takeOff();
+up(5);
+setSpeed(5);
+down(4.5);
+setSpeed(5);
+
+$ After making sure that the drone is still working the user lands the drone. $
+land();
