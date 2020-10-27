@@ -19,7 +19,24 @@ start: statement_list
 statement_list: statement
                 | statement statement_list
 
-statement
+statement : COMMENT
+            | <expression> SEMICOLON
+            | loop
+            | <if>
+            | <function_definition>  
+
+data_type ::= INT_TYPE
+               | FLOAT_TYPE
+               | CHAR_TYPE
+               | BOOLEAN_TYPE 
+
+loop ::= while_loop
+         | for_loop                          
+
+
+while_loop : WHILE LP logical_expression RP LCB statement_list RCB
+
+logical_expression :   
                 
 %%
 #include "rune.l"
