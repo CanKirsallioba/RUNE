@@ -19,7 +19,7 @@
          | <for_loop>        
 <while_loop> ::= WHILE LP <logical_expression> RP LCB <statement_list> RCB
 <for_loop> ::= FOR LP <for_loop_expression> RP LCB <statement_list> RCB
-<for_loop_expression> ::= <expression> SEMICOLON BOOLEAN; <expression>
+<for_loop_expression> ::= <assignment> SEMICOLON BOOLEAN SEMICOLON <assignment>
 
 4) Conditional Definition
 <if> ::= IF LP <logical_expression> RP LCB <statement_list> RCB <else> 
@@ -30,6 +30,7 @@
 <expression> ::= <expression> PLUS <expression2>
                 | <expression> MINUS <expression2>
                 | <expression2>
+
 
 <expression2> ::= <expression2> MULTIPLICATION <expression3>
                 | <expression2> DIVISION <expression3>
@@ -50,17 +51,17 @@
 <function_call> ::= IDENTIFIER LP <function_call_argument_list> RP
                    | <primitive_function_call>
 
-<logical_expression> ::= BOOLEAN 
-                        | <comparison>
+<logical_expression> ::= <comparison>
                         | <basic_equality>
-                        | <function_call>
+                        //                                                 | <function_call>
                         | <logical_expression> OR <logical_expression2>
                         | <logical_expression2>
                         
 <logical_expression2> ::= <logical_expression2> AND <logical_expression3>
                         | <logical_expression3>
 
-<logical_expression3> ::= <logical_expression>
+<logical_expression3> ::= LP <logical_expression> RP
+                        | BOOLEAN
 
 <basic_equality> ::= <equality_element> <equality_operator> <equality_element>
 
@@ -88,7 +89,7 @@
                 | <data_type> IDENTIFIER ASSIGNMENT_OPERATOR <expression>
 
 6) Function Definition
-<function_def> ::= <void_with_return>
+<function_definition> ::= <void_with_return>
                   | <void_without_return>
                   | <non_void_func_def>
                   | <only_return_func_def>
