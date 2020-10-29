@@ -2,6 +2,7 @@
 <program> ::= <statement_list>
 <statement_list> ::= <statement>
                     | <statement_list> <statement>
+                    
 <statement> ::= COMMENT
                 | <expression> SEMICOLON
                 | <loop>
@@ -93,15 +94,19 @@
                   | <only_return_func_def>
                             
 <void_with_return> ::= VOID_TYPE IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> <void_return_statement> RCB
+                      | VOID_TYPE IDENTIFIER LP RP LCB <statement_list> <void_return_statement> RCB
 <void_without_return> ::= VOID_TYPE IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> RCB
+                         | VOID_TYPE IDENTIFIER LP RP LCB <statement_list> RCB
 <non_void_func_def> ::= <data_type> IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> <return_statement> RCB
+                      | <data_type> IDENTIFIER LP RP LCB <statement_list> <return_statement> RCB
 <only_return_func_def> ::= <data_type> IDENTIFIER LP <function_definition_argument_list> RP LCB <return_statement> RCB
+                         | <data_type> IDENTIFIER LP RP LCB <return_statement> RCB
 <void_return_statement> ::= RETURN SEMICOLON
 <return_statement> ::= RETURN <expression> SEMICOLON
 
 <function_definition_argument_list> ::= <function_definition_argument> COMMA <function_definition_argument_list> 
                                        | <function_definition_argument> 
-                                       | empty
+                                       | EMPTY
 
 <function_definition_argument> ::=  INT_TYPE IDENTIFIER
                                    | FLOAT_TYPE IDENTIFIER
@@ -110,7 +115,7 @@
 
 <function_call_argument_list> ::= <function_call_argument> COMMA <function_call_argument_list> 
                                  | <function_call_argument> 
-                                 | empty
+                                 | EMPTY
 
 <function_call_argument> ::= INT
                             | FLOAT
