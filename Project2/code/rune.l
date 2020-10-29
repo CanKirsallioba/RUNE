@@ -3,6 +3,7 @@
 %{
 #include <stdio.h>
 void yyerror(char *);
+int lines=0;
 %}
 digit [0-9]
 alphanumeric [A-Za-z0-9]
@@ -61,6 +62,7 @@ connectToComputer           return CONNECT_TO_COMPUTER;
 \.                          return DOT;
 \'                          return APOSTROPHE;
 \t ;
+\n ;
 \%empty                     return EMPTY;
 
 %% 

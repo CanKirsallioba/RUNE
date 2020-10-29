@@ -13,137 +13,137 @@
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
 %token DOT APOSTROPHE EMPTY    
-%start start
-
 %%
 
-start: statement_list
+start: statement_list;
 
 statement_list: statement
-                | statement statement_list
+                | statement_list  statement
+                | EMPTY;
 
 statement : COMMENT
             | expression SEMICOLON
             | loop
             | if
-            | function_definition 
+            | function_definition; 
 
 data_type : INT_TYPE
             | FLOAT_TYPE
             | CHAR_TYPE
-            | BOOLEAN_TYPE 
+            | BOOLEAN_TYPE; 
 
 loop : while_loop
-       | for_loop                          
+       | for_loop;                          
 
 
-while_loop : WHILE LP logical_expression RP LCB statement_list RCB
+while_loop : WHILE LP logical_expression RP LCB statement_list RCB;
 
-for_loop : FOR LP for_loop_expression RP LCB statement_list RCB
+for_loop : FOR LP for_loop_expression RP LCB statement_list RCB;
 
-for_loop_expression : assignment SEMICOLON BOOLEAN SEMICOLON assignment
+for_loop_expression : assignment SEMICOLON BOOLEAN SEMICOLON assignment;
 
 if : IF LP logical_expression RP LCB statement_list RCB else 
-        | IF LP logical_expression RP LCB statement_list RCB
+        | IF LP logical_expression RP LCB statement_list RCB;
 
-else : ELSE LCB statement_list RCB
+else : ELSE LCB statement_list RCB;
 
 expression : expression PLUS expression2
             | expression MINUS expression2
-            | expression2
+            | expression2;
 
 expression2 : expression2 MULTIPLICATION expression3
             | expression2 DIVISION expression3
             | expression2 REMAINDER expression3
-            | expression3
+            | expression3;
 
 expression3 : expression4 EXPONENTIATION expression3
-            | expression4
+            | expression4;
                 
 expression4 : LP expression RP
-            | expr
+            | expr;
                 
 expr : INT
     | function_call 
     | logical_expression
-    | IDENTIFIER
+    | IDENTIFIER;
 
 
 function_call : IDENTIFIER LP function_call_argument_list RP
+            | IDENTIFIER LP RP
             | primitive_function_call
             | input_statement
-            | output_statement
+            | output_statement;
 
 logical_expression : comparison
                     | basic_equality
                     //                 | <function_call>
                     | logical_expression OR logical_expression2
-                    | logical_expression2
+                    | logical_expression2;
                         
-logical_expression2 : logical_expression2 AND logical_expression3
-                    | logical_expression3
+logical_expression2 : logical_expression2 AND BOOLEAN
+                    | BOOLEAN;
 
-logical_expression3 : BOOLEAN
-
-basic_equality : equality_element equality_operator equality_element
+basic_equality : equality_element equality_operator equality_element;
 
 equality_element : INT 
                  | BOOLEAN 
                  | IDENTIFIER 
-                 | function_call
+                 | function_call;
 
 equality_operator : EQUAL 
-                  | NOT_EQUAL                    
+                  | NOT_EQUAL;                    
 
 
-comparison :  comparison_element comparison_operator comparison_element
+comparison :  comparison_element comparison_operator comparison_element;
 
 comparison_element : INT 
                    | IDENTIFIER 
-                   | function_call               
+                   | function_call;               
 
 comparison_operator : GREATER_THAN 
                     | SMALLER_THAN 
                     | GREATER_OR_EQUAL 
-                    | SMALLER_OR_EQUAL
+                    | SMALLER_OR_EQUAL;
 
 assignment : IDENTIFIER ASSIGNMENT_OPERATOR expression
-           | data_type IDENTIFIER ASSIGNMENT_OPERATOR expression
+           | data_type IDENTIFIER ASSIGNMENT_OPERATOR expression;
 
 function_definition : void_with_return
             | void_without_return
             | non_void_func_def
-            | only_return_func_def
+            | only_return_func_def;
                             
-void_with_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list void_return_statement RCB
+void_with_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list void_return_statement RCB;
 void_without_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list RCB
-non_void_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB statement_list return_statement RCB
-only_return_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB return_statement RCB
-void_return_statement : RETURN SEMICOLON
-return_statement : RETURN expression SEMICOLON
+                    | VOID_TYPE IDENTIFIER LP  RP LCB statement_list RCB;
+
+non_void_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB statement_list return_statement RCB;
+only_return_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB return_statement RCB;
+void_return_statement : RETURN SEMICOLON;
+return_statement : RETURN expression SEMICOLON;
 
 function_definition_argument_list : function_definition_argument COMMA function_definition_argument_list
                                        | function_definition_argument
-                                       | EMPTY
+                                       | EMPTY;
 
 function_definition_argument :  INT_TYPE IDENTIFIER
                             | FLOAT_TYPE IDENTIFIER
                             | CHAR_TYPE IDENTIFIER
-                            | BOOLEAN_TYPE IDENTIFIER
+                            | BOOLEAN_TYPE IDENTIFIER;
 
 function_call_argument_list : function_call_argument COMMA function_call_argument_list
                             | function_call_argument
-                            | EMPTY
+                            | EMPTY;
 
 function_call_argument : INT
                         | FLOAT
                         | CHAR
                         | BOOLEAN
                         | IDENTIFIER
-                        | function_call
+                        | function_call;
 
-input_statement : SCAN LP RP SEMICOLON
-output_statement : PRINT LP expression RP SEMICOLON                
+input_statement : SCAN LP RP SEMICOLON;
+output_statement : PRINT LP expression RP SEMICOLON;                
 
 primitive_function_call : read_inclination_function
                         | read_altitude_function
@@ -152,7 +152,7 @@ primitive_function_call : read_inclination_function
                         | set_camera_state_function
                         | take_picture_function
                         | read_timestamp_function
-                        | connect_to_computer_function
+                        | connect_to_computer_function;
 //                        | do_flip_function
 //                        | takeoff_function
 //                        | land_function
@@ -168,37 +168,37 @@ primitive_function_call : read_inclination_function
 //                        | get_speed_function
 //                        | get_battery_function
 
-read_inclination_function : READ_INCLINATION LP RP 
-read_altitude_function : READ_ALTITUDE LP RP 
-read_temperature_function : READ_TEMPERATURE LP RP 
-read_acceleration_function : READ_ACCELERATION LP RP 
-set_camera_state_function : SET_CAMERA_STATE LP BOOLEAN RP 
-take_picture_function : TAKE_PICTURE LP RP 
-read_timestamp_function : READ_TIMESTAMP LP RP 
-connect_to_computer_function : CONNECT_TO_COMPUTER LP RP 
+read_inclination_function : READ_INCLINATION LP RP; 
+read_altitude_function : READ_ALTITUDE LP RP; 
+read_temperature_function : READ_TEMPERATURE LP RP; 
+read_acceleration_function : READ_ACCELERATION LP RP; 
+set_camera_state_function : SET_CAMERA_STATE LP BOOLEAN RP; 
+take_picture_function : TAKE_PICTURE LP RP; 
+read_timestamp_function : READ_TIMESTAMP LP RP; 
+connect_to_computer_function : CONNECT_TO_COMPUTER LP RP; 
 
 
-//do_flip_function : DO_FLIP LP CHAR RP 
-//takeoff_function : TAKEOFF LP RP 
-//land_function : LAND LP RP 
-//emergency_function : EMERGENCY LP BOOLEAN RP 
-//up_function : UP LP INT 
-//down_function : DOWN LP INT RP 
-//right_function : RIGHT LP INT RP 
-//left_function : LEFT LP INT RP 
-//forward_function : FORWARD LP INT RP 
-//backward_function : BACKWARD LP INT RP
-//rotate_clockwise_function : ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP 
-//set_speed_function : SET_SPEED LP INT RP 
-//get_speed_function : GET_SPEED LP RP 
-//get_battery_function : GET_BATTERY LP RP 
+//do_flip_function : DO_FLIP LP CHAR RP; 
+//takeoff_function : TAKEOFF LP RP; 
+//land_function : LAND LP RP; 
+//emergency_function : EMERGENCY LP BOOLEAN RP; 
+//up_function : UP LP INT; 
+//down_function : DOWN LP INT RP; 
+//right_function : RIGHT LP INT RP; 
+//left_function : LEFT LP INT RP; 
+//forward_function : FORWARD LP INT RP;
+//backward_function : BACKWARD LP INT RP;
+//rotate_clockwise_function : ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP; 
+//set_speed_function : SET_SPEED LP INT RP; 
+//get_speed_function : GET_SPEED LP RP; 
+//get_battery_function : GET_BATTERY LP RP; 
 
                 
 %%
 #include "lex.yy.c"
 
 void yyerror(char* s) {
-    fprintf(stdout, "Syntax error on line %d: %s\n", yylineno,s);
+    fprintf(stdout, "Syntax error on line %d: %s \n", yylineno,s);
 }
 
 
