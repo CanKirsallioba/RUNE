@@ -25,7 +25,8 @@ statement : COMMENT
             | expression SEMICOLON
             | loop
             | if
-            | function_definition; 
+            | function_definition
+            | assignment SEMICOLON;
 
 data_type : INT_TYPE
             | FLOAT_TYPE
@@ -113,13 +114,20 @@ function_definition : void_with_return
             | non_void_func_def
             | only_return_func_def;
                             
-void_with_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list void_return_statement RCB;
+void_with_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list void_return_statement RCB
+                 | VOID_TYPE IDENTIFIER LP RP LCB statement_list void_return_statement RCB;
+
 void_without_return : VOID_TYPE IDENTIFIER LP function_definition_argument_list RP LCB statement_list RCB
                     | VOID_TYPE IDENTIFIER LP  RP LCB statement_list RCB;
 
-non_void_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB statement_list return_statement RCB;
-only_return_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB return_statement RCB;
+non_void_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB statement_list return_statement RCB
+                    | data_type IDENTIFIER LP RP LCB statement_list return_statement RCB;
+
+only_return_func_def : data_type IDENTIFIER LP function_definition_argument_list RP LCB return_statement RCB
+                    | data_type IDENTIFIER LP RP LCB return_statement RCB;
+
 void_return_statement : RETURN SEMICOLON;
+
 return_statement : RETURN expression SEMICOLON;
 
 function_definition_argument_list : function_definition_argument COMMA function_definition_argument_list
