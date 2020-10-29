@@ -1,6 +1,7 @@
 /*rune.y*/
 %{
     #include <stdio.h>
+    #include <stdlib.h>
     int yylex(void);
     extern int yylineno;
     void yyerror(char* s);
@@ -12,6 +13,7 @@
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
 %token DOT APOSTROPHE EMPTY    
+%start start
 
 %%
 
@@ -199,6 +201,7 @@ void yyerror(char* s) {
     fprintf(stdout, "Syntax error on line %d: %s\n", yylineno,s);
 }
 
+
 int main() {
     yyparse();
     if (yynerrs == 0) {
@@ -206,4 +209,5 @@ int main() {
 	}
     return 0;
 }
+
 

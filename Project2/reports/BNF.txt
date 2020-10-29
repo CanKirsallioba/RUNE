@@ -57,11 +57,9 @@
                         | <logical_expression> OR <logical_expression2>
                         | <logical_expression2>
                         
-<logical_expression2> ::= <logical_expression2> AND <logical_expression3>
-                        | <logical_expression3>
-
-<logical_expression3> ::= LP <logical_expression> RP
+<logical_expression2> ::= <logical_expression2> AND BOOLEAN
                         | BOOLEAN
+
 
 <basic_equality> ::= <equality_element> <equality_operator> <equality_element>
 
