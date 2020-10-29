@@ -1812,7 +1812,7 @@ yyreturn:
 }
 #line 197 "rune.y"
 
-#include "rune.l"
+#include "lex.yy.c"
 
 void yyerror(char* s) {
     fprintf(stdout, "Syntax error on line %d: %s\n", yylineno,s);
