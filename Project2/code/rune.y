@@ -9,6 +9,7 @@
 %token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
 %token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER
+%token DO_FLIP TAKEOFF LAND EMERGENCY UP DOWN RIGHT LEFT FORWARD BACKWARD ROTATE_CLOCKWISE SET_SPEED GET_SPEED GET_BATTERY
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
@@ -64,17 +65,17 @@ expression4 : LP expression RP
             | expr;
                 
 expr : INT
-    | FLOAT
-    | BOOLEAN
-    | CHAR
-    | function_call 
-    | logical_expression
-    | IDENTIFIER;
+     | FLOAT
+     | CHAR
+     | function_call 
+     | logical_expression
+     | IDENTIFIER;
 
 
 function_call : IDENTIFIER LP function_call_argument_list RP
             | IDENTIFIER LP RP
             | primitive_function_call
+            | extra_function_call
             | input_statement
             | output_statement;
 
@@ -90,7 +91,6 @@ basic_equality : equality_element equality_operator equality_element;
 
 equality_element : INT
                  | FLOAT
-                 | BOOLEAN 
                  | CHAR
                  | IDENTIFIER 
                  | function_call;
@@ -175,6 +175,36 @@ set_camera_state_function : SET_CAMERA_STATE LP BOOLEAN RP;
 take_picture_function : TAKE_PICTURE LP RP; 
 read_timestamp_function : READ_TIMESTAMP LP RP; 
 connect_to_computer_function : CONNECT_TO_COMPUTER LP RP; 
+
+extra_function_call : do_flip_function
+                    | takeoff_function
+                    | land_function
+                    | emergency_function
+                    | up_function
+                    | down_function
+                    | right_function
+                    | left_function
+                    | forward_function
+                    | backward_function
+                    | rotate_clockwise_function
+                    | set_speed_function
+                    | get_speed_function
+                    | get_battery_function;
+
+do_flip_function : DO_FLIP LP CHAR RP;
+takeoff_function : TAKEOFF LP RP; 
+land_function : LAND LP RP; 
+emergency_function : EMERGENCY LP BOOLEAN RP; 
+up_function : UP LP INT; 
+down_function : DOWN LP INT RP; 
+right_function : RIGHT LP INT RP; 
+left_function : LEFT LP INT RP; 
+forward_function : FORWARD LP INT RP; 
+backward_function : BACKWARD LP INT RP;
+rotate_clockwise_function : ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP; 
+set_speed_function : SET_SPEED LP INT RP; 
+get_speed_function : GET_SPEED LP RP;
+get_battery_function : GET_BATTERY LP RP; 
 
                 
 %%
