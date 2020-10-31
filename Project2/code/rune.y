@@ -206,7 +206,7 @@ connect_to_computer_function : CONNECT_TO_COMPUTER LP RP;
 #include "lex.yy.c"
 
 void yyerror(char* s) {
-    fprintf(stdout, "Syntax error on line %d: %s \n", yylineno,s);
+    fprintf(stdout, "Syntax error on line %d: %s !\n", yylineno,s);
 }
 
 
