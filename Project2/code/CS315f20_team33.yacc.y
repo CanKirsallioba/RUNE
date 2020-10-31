@@ -152,7 +152,7 @@ function_call_argument : INT
                         | IDENTIFIER
                         | function_call;
 
-input_statement : SCAN LP RP SEMICOLON;
+input_statement : SCAN LP RP;
 output_statement : PRINT LP expression RP SEMICOLON;                
 
 primitive_function_call : read_inclination_function
