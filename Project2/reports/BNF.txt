@@ -141,7 +141,7 @@
                             | <function_call>
 
 7) Input Output Definition
-<input_statement> ::= SCAN LP RP SEMICOLON
+<input_statement> ::= SCAN LP RP
 <output_statement> ::= PRINT LP <expression> RP SEMICOLON
 
 8) Drone Functions
