@@ -195,7 +195,7 @@ do_flip_function : DO_FLIP LP CHAR RP;
 takeoff_function : TAKEOFF LP RP; 
 land_function : LAND LP RP; 
 emergency_function : EMERGENCY LP BOOLEAN RP; 
-up_function : UP LP INT; 
+up_function : UP LP INT RP; 
 down_function : DOWN LP INT RP; 
 right_function : RIGHT LP INT RP; 
 left_function : LEFT LP INT RP; 

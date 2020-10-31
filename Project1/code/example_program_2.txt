@@ -8,7 +8,7 @@ void checkStats() {
     if (batteryLevel <= 50) {
         int altitude <- readAltitude();
         if (altitude <= 60) {
-            print("System functions normally.)
+            print("System functions normally.")
         } else { 
             if (temperature <= 10) {
                 print("Weather conditions alert!");
