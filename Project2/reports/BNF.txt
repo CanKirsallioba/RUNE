@@ -48,9 +48,7 @@
                 | <expr>
                 
 <expr> ::= INT
-          | SIGNED_INT
           | FLOAT
-          | SIGNED_FLOAT
           | BOOLEAN
           | CHAR 
           | <function_call> 
@@ -75,9 +73,7 @@
 <basic_equality> ::= <equality_element> <equality_operator> <equality_element>
 
 <equality_element> ::= INT 
-                      | SIGNED_INT
                       | FLOAT
-                      | SIGNED_FLOAT
                       | BOOLEAN 
                       | IDENTIFIER 
                       | <function_call>
@@ -89,9 +85,7 @@
 <comparison> ::=  <comparison_element> <comparison_operator> <comparison_element>
 
 <comparison_element> ::= INT 
-                        | SIGNED_INT
                         | FLOAT
-                        | SIGNED_FLOAT
                         | BOOLEAN
                         | CHAR
                         | IDENTIFIER 
@@ -140,9 +134,7 @@
                                  | EMPTY
 
 <function_call_argument> ::= INT
-                            | SIGNED_INT
                             | FLOAT
-                            | SIGNED_FLOAT
                             | CHAR
                             | BOOLEAN
                             | IDENTIFIER

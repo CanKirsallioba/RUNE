@@ -6,7 +6,7 @@
     extern int yylineno;
     void yyerror(char* s);
 %}
-%token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT SIGNED_INT FLOAT SIGNED_FLOAT CHAR BOOLEAN
+%token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
 %token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
@@ -64,9 +64,7 @@ expression4 : LP expression RP
             | expr;
                 
 expr : INT
-    | SIGNED_INT
     | FLOAT
-    | SIGNED_FLOAT
     | BOOLEAN
     | CHAR
     | function_call 
@@ -91,9 +89,7 @@ logical_expression2 : logical_expression2 AND BOOLEAN
 basic_equality : equality_element equality_operator equality_element;
 
 equality_element : INT
-                 | SIGNED_INT
                  | FLOAT
-                 | SIGNED_FLOAT
                  | BOOLEAN 
                  | CHAR
                  | IDENTIFIER 
@@ -106,9 +102,7 @@ equality_operator : EQUAL
 comparison :  comparison_element comparison_operator comparison_element;
 
 comparison_element : INT
-                   | SIGNED_INT
                    | FLOAT
-                   | SIGNED_FLOAT
                    | IDENTIFIER 
                    | function_call;               
 
@@ -155,9 +149,7 @@ function_call_argument_list : function_call_argument COMMA function_call_argumen
                             | EMPTY;
 
 function_call_argument : INT
-                        | SIGNED_INT
                         | FLOAT
-                        | SIGNED_FLOAT
                         | CHAR
                         | BOOLEAN
                         | IDENTIFIER
