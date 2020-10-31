@@ -6,7 +6,7 @@
     extern int yylineno;
     void yyerror(char* s);
 %}
-%token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
+%token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT SIGNED_INT FLOAT SIGNED_FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
 %token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
@@ -64,6 +64,11 @@ expression4 : LP expression RP
             | expr;
                 
 expr : INT
+    | SIGNED_INT
+    | FLOAT
+    | SIGNED_FLOAT
+    | BOOLEAN
+    | CHAR
     | function_call 
     | logical_expression
     | IDENTIFIER;
@@ -77,7 +82,6 @@ function_call : IDENTIFIER LP function_call_argument_list RP
 
 logical_expression : comparison
                     | basic_equality
-                    //                 | <function_call>
                     | logical_expression OR logical_expression2
                     | logical_expression2;
                         
@@ -86,8 +90,12 @@ logical_expression2 : logical_expression2 AND BOOLEAN
 
 basic_equality : equality_element equality_operator equality_element;
 
-equality_element : INT 
+equality_element : INT
+                 | SIGNED_INT
+                 | FLOAT
+                 | SIGNED_FLOAT
                  | BOOLEAN 
+                 | CHAR
                  | IDENTIFIER 
                  | function_call;
 
@@ -97,7 +105,10 @@ equality_operator : EQUAL
 
 comparison :  comparison_element comparison_operator comparison_element;
 
-comparison_element : INT 
+comparison_element : INT
+                   | SIGNED_INT
+                   | FLOAT
+                   | SIGNED_FLOAT
                    | IDENTIFIER 
                    | function_call;               
 
@@ -144,7 +155,9 @@ function_call_argument_list : function_call_argument COMMA function_call_argumen
                             | EMPTY;
 
 function_call_argument : INT
+                        | SIGNED_INT
                         | FLOAT
+                        | SIGNED_FLOAT
                         | CHAR
                         | BOOLEAN
                         | IDENTIFIER
@@ -161,20 +174,6 @@ primitive_function_call : read_inclination_function
                         | take_picture_function
                         | read_timestamp_function
                         | connect_to_computer_function;
-//                        | do_flip_function
-//                        | takeoff_function
-//                        | land_function
-//                        | emergency_function
-//                        | up_function
-//                        | down_function
-//                        | right_function
-//                        | left_function
-//                        | forward_function
-//                        | backward_function
-//                        | rotate_clockwise_function
-//                        | set_speed_function
-//                        | get_speed_function
-//                        | get_battery_function
 
 read_inclination_function : READ_INCLINATION LP RP; 
 read_altitude_function : READ_ALTITUDE LP RP; 
@@ -184,22 +183,6 @@ set_camera_state_function : SET_CAMERA_STATE LP BOOLEAN RP;
 take_picture_function : TAKE_PICTURE LP RP; 
 read_timestamp_function : READ_TIMESTAMP LP RP; 
 connect_to_computer_function : CONNECT_TO_COMPUTER LP RP; 
-
-
-//do_flip_function : DO_FLIP LP CHAR RP; 
-//takeoff_function : TAKEOFF LP RP; 
-//land_function : LAND LP RP; 
-//emergency_function : EMERGENCY LP BOOLEAN RP; 
-//up_function : UP LP INT; 
-//down_function : DOWN LP INT RP; 
-//right_function : RIGHT LP INT RP; 
-//left_function : LEFT LP INT RP; 
-//forward_function : FORWARD LP INT RP;
-//backward_function : BACKWARD LP INT RP;
-//rotate_clockwise_function : ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP; 
-//set_speed_function : SET_SPEED LP INT RP; 
-//get_speed_function : GET_SPEED LP RP; 
-//get_battery_function : GET_BATTERY LP RP; 
 
                 
 %%

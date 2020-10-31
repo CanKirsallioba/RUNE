@@ -2,12 +2,14 @@
 <program> ::= <statement_list>
 <statement_list> ::= <statement>
                     | <statement_list> <statement>
+                    | EMPTY
                     
 <statement> ::= COMMENT
                 | <expression> SEMICOLON
                 | <loop>
                 | <if>
                 | <function_definition>    
+                | assignment SEMICOLON
 
 2) Types and Constants
 <data_type> ::= INT_TYPE
@@ -17,7 +19,8 @@
                
 3) Loop Definition
 <loop> ::= <while_loop> 
-         | <for_loop>        
+         | <for_loop>     
+
 <while_loop> ::= WHILE LP <logical_expression> RP LCB <statement_list> RCB
 <for_loop> ::= FOR LP <for_loop_expression> RP LCB <statement_list> RCB
 <for_loop_expression> ::= <assignment> SEMICOLON BOOLEAN SEMICOLON <assignment>
@@ -45,16 +48,23 @@
                 | <expr>
                 
 <expr> ::= INT
+          | SIGNED_INT
+          | FLOAT
+          | SIGNED_FLOAT
+          | BOOLEAN
+          | CHAR 
           | <function_call> 
           | <logical_expression>
           | IDENTIFIER
         
 <function_call> ::= IDENTIFIER LP <function_call_argument_list> RP
+                   | IDENTIFIER LP RP
                    | <primitive_function_call>
+                   | <input_statement>
+                   | <output_statement>
 
 <logical_expression> ::= <comparison>
                         | <basic_equality>
-                        //                                                 | <function_call>
                         | <logical_expression> OR <logical_expression2>
                         | <logical_expression2>
                         
@@ -65,6 +75,9 @@
 <basic_equality> ::= <equality_element> <equality_operator> <equality_element>
 
 <equality_element> ::= INT 
+                      | SIGNED_INT
+                      | FLOAT
+                      | SIGNED_FLOAT
                       | BOOLEAN 
                       | IDENTIFIER 
                       | <function_call>
@@ -76,6 +89,11 @@
 <comparison> ::=  <comparison_element> <comparison_operator> <comparison_element>
 
 <comparison_element> ::= INT 
+                        | SIGNED_INT
+                        | FLOAT
+                        | SIGNED_FLOAT
+                        | BOOLEAN
+                        | CHAR
                         | IDENTIFIER 
                         | <function_call>                
 
@@ -95,12 +113,16 @@
                             
 <void_with_return> ::= VOID_TYPE IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> <void_return_statement> RCB
                       | VOID_TYPE IDENTIFIER LP RP LCB <statement_list> <void_return_statement> RCB
+
 <void_without_return> ::= VOID_TYPE IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> RCB
                          | VOID_TYPE IDENTIFIER LP RP LCB <statement_list> RCB
+
 <non_void_func_def> ::= <data_type> IDENTIFIER LP <function_definition_argument_list> RP LCB <statement_list> <return_statement> RCB
                       | <data_type> IDENTIFIER LP RP LCB <statement_list> <return_statement> RCB
+
 <only_return_func_def> ::= <data_type> IDENTIFIER LP <function_definition_argument_list> RP LCB <return_statement> RCB
                          | <data_type> IDENTIFIER LP RP LCB <return_statement> RCB
+
 <void_return_statement> ::= RETURN SEMICOLON
 <return_statement> ::= RETURN <expression> SEMICOLON
 
@@ -118,7 +140,9 @@
                                  | EMPTY
 
 <function_call_argument> ::= INT
+                            | SIGNED_INT
                             | FLOAT
+                            | SIGNED_FLOAT
                             | CHAR
                             | BOOLEAN
                             | IDENTIFIER
@@ -137,20 +161,6 @@
                         | <take_picture_function>
                         | <read_timestamp_function>
                         | <connect_to_computer_function>
-                        | <do_flip_function>
-                        | <takeoff_function>
-                        | <land_function>
-                        | <emergency_function>
-                        | <up_function>
-                        | <down_function>
-                        | <right_function>
-                        | <left_function>
-                        | <forward_function>
-                        | <backward_function>
-                        | <rotate_clockwise_function>
-                        | <set_speed_function>
-                        | <get_speed_function>
-                        | <get_battery_function>
 
 <read_inclination_function> ::= READ_INCLINATION LP RP 
 <read_altitude_function> ::= READ_ALTITUDE LP RP 
@@ -159,20 +169,4 @@
 <set_camera_state_function> ::= SET_CAMERA_STATE LP BOOLEAN RP 
 <take_picture_function> ::= TAKE_PICTURE LP RP 
 <read_timestamp_function> ::= READ_TIMESTAMP LP RP 
-<connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP 
-
-9) Our Extra Functions
-<do_flip_function> ::= DO_FLIP LP CHAR RP 
-<takeoff_function> ::= TAKEOFF LP RP 
-<land_function> ::= LAND LP RP 
-<emergency_function> ::= EMERGENCY LP BOOLEAN RP 
-<up_function> ::= UP LP INT 
-<down_function> ::= DOWN LP INT RP 
-<right_function> ::= RIGHT LP INT RP 
-<left_function> ::= LEFT LP INT RP 
-<forward_function> ::= FORWARD LP INT RP 
-<backward_function> ::= BACKWARD LP INT RP
-<rotate_clockwise_function> ::= ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP 
-<set_speed_function> ::= SET_SPEED LP INT RP 
-<get_speed_function> ::= GET_SPEED LP RP 
-<get_battery_function> ::= GET_BATTERY LP RP 
+<connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP  
