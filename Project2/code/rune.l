@@ -77,7 +77,6 @@ getBattery                  return GET_BATTERY;
 \'                          return APOSTROPHE;
 \t ;
 \n ;
-\%empty                     return EMPTY;
 
 %% 
 int yywrap(void) { return 1; }

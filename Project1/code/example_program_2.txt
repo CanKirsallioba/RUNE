@@ -7,18 +7,20 @@ void checkStats() {
 
     if (batteryLevel <= 50) {
         int altitude <- readAltitude();
+        $ TRUE indicates the system is functioning normally. $
+        $ FALSE indicates the system is not functioning normally. $
         if (altitude <= 60) {
-            print("System functions normally.")
+            print(TRUE);
         } else { 
             if (temperature <= 10) {
-                print("Weather conditions alert!");
+                print(FALSE);
                 emergency(TRUE);
             } else {
-                print("System functions normally.");
+                print(TRUE);
             }
         }
     } else {
-        print("System functions normally.");
+        print(TRUE);
     }
 }
 

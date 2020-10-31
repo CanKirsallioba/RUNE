@@ -13,14 +13,13 @@
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
-%token DOT APOSTROPHE EMPTY    
+%token DOT APOSTROPHE     
 %%
 
 start: statement_list;
 
 statement_list: statement
-                | statement_list  statement
-                | EMPTY;
+                | statement_list  statement;
 
 statement : COMMENT
             | expression SEMICOLON
@@ -42,7 +41,7 @@ while_loop : WHILE LP logical_expression RP LCB statement_list RCB;
 
 for_loop : FOR LP for_loop_expression RP LCB statement_list RCB;
 
-for_loop_expression : assignment SEMICOLON BOOLEAN SEMICOLON assignment;
+for_loop_expression : assignment SEMICOLON logical_expression SEMICOLON assignment;
 
 if : IF LP logical_expression RP LCB statement_list RCB else 
         | IF LP logical_expression RP LCB statement_list RCB;
@@ -136,8 +135,7 @@ void_return_statement : RETURN SEMICOLON;
 return_statement : RETURN expression SEMICOLON;
 
 function_definition_argument_list : function_definition_argument COMMA function_definition_argument_list
-                                       | function_definition_argument
-                                       | EMPTY;
+                                       | function_definition_argument;
 
 function_definition_argument :  INT_TYPE IDENTIFIER
                             | FLOAT_TYPE IDENTIFIER
@@ -145,8 +143,7 @@ function_definition_argument :  INT_TYPE IDENTIFIER
                             | BOOLEAN_TYPE IDENTIFIER;
 
 function_call_argument_list : function_call_argument COMMA function_call_argument_list
-                            | function_call_argument
-                            | EMPTY;
+                            | function_call_argument;
 
 function_call_argument : INT
                         | FLOAT
