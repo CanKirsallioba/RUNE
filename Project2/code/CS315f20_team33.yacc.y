@@ -37,14 +37,14 @@ loop : while_loop
        | for_loop;                          
 
 
-while_loop : WHILE LP logical_expression RP LCB statement_list RCB;
+while_loop : WHILE LP expression RP LCB statement_list RCB;
 
 for_loop : FOR LP for_loop_expression RP LCB statement_list RCB;
 
-for_loop_expression : assignment SEMICOLON logical_expression SEMICOLON assignment;
+for_loop_expression : assignment SEMICOLON expression SEMICOLON assignment;
 
-if : IF LP logical_expression RP LCB statement_list RCB else 
-        | IF LP logical_expression RP LCB statement_list RCB;
+if : IF LP expression RP LCB statement_list RCB else 
+        | IF LP expression RP LCB statement_list RCB;
 
 else : ELSE LCB statement_list RCB;
 
