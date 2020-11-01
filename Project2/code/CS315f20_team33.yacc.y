@@ -25,7 +25,8 @@ statement : COMMENT
             | loop
             | if
             | function_definition
-            | assignment SEMICOLON;
+            | assignment SEMICOLON
+            | return_statement;
 
 data_type : INT_TYPE
             | FLOAT_TYPE
@@ -47,28 +48,39 @@ if : IF LP expression RP LCB statement_list RCB else
 
 else : ELSE LCB statement_list RCB;
 
-expression : expression PLUS expression2 
-            | expression MINUS expression2 
+expression : expression OR expression2
             | expression2;
 
-expression2 : expression2 MULTIPLICATION expression3 
-            | expression2 DIVISION expression3 
-            | expression2 REMAINDER expression3
+expression2 : expression2 AND expression3
             | expression3;
 
-expression3 : expression4 EXPONENTIATION expression3 
-            | expression4;
+expression3 : expression3 equality_operator expression4
+           | expression4;
+
+expression4 : expression4 comparison_operator expression5
+           | expression5;                     
+            
+expression5 : expression5 PLUS expression6 
+            | expression5 MINUS expression6 
+            | expression6;
+
+expression6 : expression6 MULTIPLICATION expression7 
+            | expression6 DIVISION expression7 
+            | expression6 REMAINDER expression7
+            | expression7;
+
+expression7 : expression8 EXPONENTIATION expression7 
+            | expression8;
                 
-expression4 : LP expression RP 
+expression8 : LP expression RP 
             | expr;
                 
 expr : INT
      | FLOAT
      | CHAR
+     | BOOLEAN
      | function_call 
-     | logical_expression
      | IDENTIFIER;
-
 
 function_call : IDENTIFIER LP function_call_argument_list RP
             | IDENTIFIER LP RP
@@ -76,32 +88,8 @@ function_call : IDENTIFIER LP function_call_argument_list RP
             | input_statement
             | output_statement;
 
-logical_expression : comparison
-                    | basic_equality
-                    | logical_expression OR logical_expression2
-                    | logical_expression2;
-                        
-logical_expression2 : logical_expression2 AND BOOLEAN
-                    | BOOLEAN;
-
-basic_equality : equality_element equality_operator equality_element;
-
-equality_element : INT
-                 | FLOAT
-                 | CHAR
-                 | IDENTIFIER 
-                 | function_call;
-
 equality_operator : EQUAL 
-                  | NOT_EQUAL;                    
-
-
-comparison :  comparison_element comparison_operator comparison_element;
-
-comparison_element : INT
-                   | FLOAT
-                   | IDENTIFIER 
-                   | function_call;               
+                  | NOT_EQUAL;                                  
 
 comparison_operator : GREATER_THAN 
                     | SMALLER_THAN 
@@ -151,7 +139,7 @@ function_call_argument : INT
                         | function_call;
 
 input_statement : SCAN LP RP;
-output_statement : PRINT LP expression RP SEMICOLON;                
+output_statement : PRINT LP expression RP;                
 
 primitive_function_call : read_inclination_function
                         | read_altitude_function

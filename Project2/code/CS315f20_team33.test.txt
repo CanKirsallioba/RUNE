@@ -11,7 +11,7 @@ boolean checkStats() {
         $ TRUE indicates the system is functioning normally. $
         $ FALSE indicates the system is not functioning normally. $
         if (altitude <= 60) {
-            return FALSE;
+            return FALSE ;
         } else { 
             if (temperature <= 10) {
                 return TRUE;
@@ -22,8 +22,21 @@ boolean checkStats() {
     } else {
         return FALSE;
     }
+    return FALSE;
 }
 
+
+$ User defines a function to take multiple pictures. $ 
+
+void takeMultiplePictures(int count) {
+    turnOnCamera();
+
+    for (int i <- 0; i < numberOfPictures; i <- i + 1) {
+        takePicture();
+    }
+
+    turnOffCamera();
+}
 
 $ The user connects the drone to the computer. $
 
@@ -35,20 +48,13 @@ $ The user takes off. $
 takeoff();
 
 
-$ The user checks the altitude, if the altitude is 60 meters or not. $ 
-$ If the altitude is 60 meters the user turns on the camera, takes the photo, then turns of the camera. $
+$ The user checks the altitude and the temperature, if the altitude is 60 meters and the temperature is less than or equal to 35 degrees or not. $ 
+$ If the altitude is 60 meters and the temperature is less than or equal to 35 degrees the user turns on the camera, takes the photo, then turns of the camera. $
 $ The user lets his friend determine the number of pictures to be taken. $
 
-int numberOfPictures = scan();
-
-if (readAltitude() == 60) {
-    turnOnCamera();
-
-    for (int i = 0; i < numberOfPictures; i <- i + 1) {
-        takePicture();
-    }
-    
-    turnOffCamera();
+if (readAltitude() == 60 && readTemperature() <= 35) {
+    int numberOfPictures <- scan();
+    takeMultiplePictures(numberOfPictures);
 }
 
 
@@ -56,8 +62,10 @@ $ The user checks stats and according to the stats the drone takes pictures or r
 
 if (checkStats()) {
     turnOnCamera();
-    while (getFlightTime() <= 5) {
-        takePicture();
+    while (getFlightTime() <= 300) {
+        if (getFlightTime() % 4 == 0) {
+            takePicture();
+        }
     }
     turnOffCamera();
 } else {
