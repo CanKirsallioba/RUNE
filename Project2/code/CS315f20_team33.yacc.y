@@ -8,7 +8,7 @@
 %}
 %token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
-%token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER TAKEOFF LAND GET_FLIGHT_TIME
+%token READ_ACCELERATION TURN_ON_CAMERA TURN_OFF_CAMERA TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER TAKEOFF LAND GET_FLIGHT_TIME
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
@@ -47,19 +47,19 @@ if : IF LP expression RP LCB statement_list RCB else
 
 else : ELSE LCB statement_list RCB;
 
-expression : expression PLUS expression2
-            | expression MINUS expression2
+expression : expression PLUS expression2 
+            | expression MINUS expression2 
             | expression2;
 
-expression2 : expression2 MULTIPLICATION expression3
-            | expression2 DIVISION expression3
+expression2 : expression2 MULTIPLICATION expression3 
+            | expression2 DIVISION expression3 
             | expression2 REMAINDER expression3
             | expression3;
 
-expression3 : expression4 EXPONENTIATION expression3
+expression3 : expression4 EXPONENTIATION expression3 
             | expression4;
                 
-expression4 : LP expression RP
+expression4 : LP expression RP 
             | expr;
                 
 expr : INT
@@ -163,7 +163,8 @@ primitive_function_call : read_inclination_function
                         | read_timestamp_function
                         | connect_to_computer_function
                         | takeoff_function
-                        | land_function;
+                        | land_function
+                        | get_flight_time_function;
 
 read_inclination_function : READ_INCLINATION LP RP; 
 read_altitude_function : READ_ALTITUDE LP RP; 
@@ -174,9 +175,9 @@ turn_off_camera_function : TURN_OFF_CAMERA LP RP;
 take_picture_function : TAKE_PICTURE LP RP; 
 read_timestamp_function : READ_TIMESTAMP LP RP; 
 connect_to_computer_function : CONNECT_TO_COMPUTER LP RP;
-takeoff : TAKEOFF LP RP;
-land : LAND LP RP; 
-get_flight_time : GET_FLIGHT_TIME LP RP;
+takeoff_function : TAKEOFF LP RP;
+land_function : LAND LP RP; 
+get_flight_time_function : GET_FLIGHT_TIME LP RP;
          
 %%
 #include "lex.yy.c"
