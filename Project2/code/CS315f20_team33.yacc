@@ -171,7 +171,7 @@ get_flight_time_function : GET_FLIGHT_TIME LP RP;
 #include "lex.yy.c"
 
 void yyerror(char* s) {
-    fprintf(stdout, "Syntax error on line %d: %s !\n", yylineno,s);
+    fprintf(stdout, "Syntax error on line %d: %s!\n", yylineno,s);
 }
 
 
