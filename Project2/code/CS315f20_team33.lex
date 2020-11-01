@@ -2,7 +2,7 @@
 %option yylineno
 %{
 #include <stdio.h>
-void yyerror(char *);
+void yyerror();
 int lines=0;
 %}
 digit [0-9]

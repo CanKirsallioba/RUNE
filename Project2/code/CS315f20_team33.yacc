@@ -4,7 +4,7 @@
     #include <stdlib.h>
     int yylex(void);
     extern int yylineno;
-    void yyerror(char* s);
+    void yyerror();
 %}
 %token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
@@ -170,8 +170,8 @@ get_flight_time_function : GET_FLIGHT_TIME LP RP;
 %%
 #include "lex.yy.c"
 
-void yyerror(char* s) {
-    fprintf(stdout, "Syntax error on line %d: %s!\n", yylineno,s);
+void yyerror() {
+    fprintf(stdout, "Syntax error on line %d!\n", yylineno);
 }
 
 
