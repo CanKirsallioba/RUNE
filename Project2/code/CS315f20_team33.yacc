@@ -1,7 +1,5 @@
 /*rune.y*/
 %{
-    #include <stdio.h>
-    #include <stdlib.h>
     int yylex(void);
     extern int yylineno;
     void yyerror();

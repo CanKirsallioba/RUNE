@@ -1,9 +1,7 @@
 /*rune.l*/
 %option yylineno
 %{
-#include <stdio.h>
 void yyerror();
-int lines=0;
 %}
 digit [0-9]
 alphanumeric [A-Za-z0-9]
