@@ -4,14 +4,13 @@ BNF description of RUNE
 <program> ::= <statement_list>
 <statement_list> ::= <statement>
                     | <statement_list> <statement>
-                    | EMPTY
                     
 <statement> ::= COMMENT
                | <expression> SEMICOLON
                | <loop>
                | <if>
                | <function_definition>    
-               | assignment SEMICOLON
+               | <assignment> SEMICOLON
 
 2) Types and Constants
 <data_type> ::= INT_TYPE
@@ -140,7 +139,8 @@ expr ::= INT
                         | <read_altitude_function>
                         | <read_temperature_function>
                         | <read_acceleration_function>
-                        | <set_camera_state_function>
+                        | <turn_on_camera_function>
+                        | <turn_on_camera_function>
                         | <take_picture_function>
                         | <read_timestamp_function>
                         | <connect_to_computer_function>
@@ -152,7 +152,8 @@ expr ::= INT
 <read_altitude_function> ::= READ_ALTITUDE LP RP 
 <read_temperature_function> ::= READ_TEMPERATURE LP RP 
 <read_acceleration_function> ::= READ_ACCELERATION LP RP 
-<set_camera_state_function> ::= SET_CAMERA_STATE LP BOOLEAN RP 
+<turn_on_camera_function> ::= TURN_ON_CAMERA LP RP 
+<turn_off_camera_function> ::= TURN_OFF_CAMERA LP RP 
 <take_picture_function> ::= TAKE_PICTURE LP RP 
 <read_timestamp_function> ::= READ_TIMESTAMP LP RP 
 <connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP  
