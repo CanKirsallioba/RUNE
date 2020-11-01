@@ -158,8 +158,12 @@
 <read_altitude_function> ::= READ_ALTITUDE LP RP 
 <read_temperature_function> ::= READ_TEMPERATURE LP RP 
 <read_acceleration_function> ::= READ_ACCELERATION LP RP 
-<set_camera_state_function> ::= SET_CAMERA_STATE LP BOOLEAN RP 
+<turn_on_camera> ::= TURN_ON_CAMERA LP RP
+<turn_off_camera> ::= TURN_OFF_CAMERA LP RP 
 <take_picture_function> ::= TAKE_PICTURE LP RP 
 <read_timestamp_function> ::= READ_TIMESTAMP LP RP 
-<connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP  
+<connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP
+<takeoff_function> ::= TAKEOFF LP RP
+<land_function> ::= LAND LP RP
+<get_flight_time> ::= GET_FLIGHT_TIME LP RP
 

@@ -2,28 +2,69 @@ $ This example program demonstrates the features of RUNE a drone programming lan
 
 $ The user defines a function so that he can check the drone's overall well being in mid air. $
 
-void checkStats() {
-    int batteryLevel <- getBattery();
+boolean checkStats() {
+    int inclination <- readInclination();
     int temperature <- readTemperature();
 
-    if (batteryLevel <= 50) {
+    if (inclination >= 10) {
         int altitude <- readAltitude();
         $ TRUE indicates the system is functioning normally. $
         $ FALSE indicates the system is not functioning normally. $
         if (altitude <= 60) {
-            emergency(FALSE);
+            return FALSE;
         } else { 
             if (temperature <= 10) {
-                emergency(TRUE);
+                return TRUE;
             } else {
-                emergency(FALSE);
+                return FALSE;
             }
         }
     } else {
-        emergency(FALSE);
+        return FALSE;
     }
 }
 
 
 $ The user connects the drone to the computer. $
+
 connectToComputer();
+
+
+$ The user takes off. $
+
+takeoff();
+
+
+$ The user checks the altitude, if the altitude is 60 meters or not. $ 
+$ If the altitude is 60 meters the user turns on the camera, takes the photo, then turns of the camera. $
+$ The user lets his friend determine the number of pictures to be taken. $
+
+int numberOfPictures = scan();
+
+if (readAltitude() == 60) {
+    turnOnCamera();
+
+    for (int i = 0; i < numberOfPictures; i <- i + 1) {
+        takePicture();
+    }
+    
+    turnOffCamera();
+}
+
+
+$ The user checks stats and according to the stats the drone takes pictures or reads current timestamp. $
+
+if (checkStats()) {
+    turnOnCamera();
+    while (getFlightTime() <= 5) {
+        takePicture();
+    }
+    turnOffCamera();
+} else {
+    print(readTimestamp());
+}
+
+
+$ The user lands the drone $
+
+land();

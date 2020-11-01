@@ -8,7 +8,7 @@
 %}
 %token INT_TYPE FLOAT_TYPE CHAR_TYPE BOOLEAN_TYPE VOID_TYPE RETURN INT FLOAT CHAR BOOLEAN
 %token IF ELSE WHILE FOR SCAN PRINT READ_INCLINATION READ_ALTITUDE READ_TEMPERATURE
-%token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER
+%token READ_ACCELERATION SET_CAMERA_STATE TAKE_PICTURE READ_TIMESTAMP CONNECT_TO_COMPUTER TAKEOFF LAND GET_FLIGHT_TIME
 %token IDENTIFIER COMMENT ASSIGNMENT_OPERATOR LP RP LCB RCB GREATER_THAN SMALLER_THAN
 %token GREATER_OR_EQUAL SMALLER_OR_EQUAL PLUS MINUS MULTIPLICATION DIVISION REMAINDER
 %token EXPONENTIATION AND OR EQUAL NOT_EQUAL SEMICOLON COMMA QUOTATION_MARK EXCLAMATION_MARK
@@ -157,19 +157,26 @@ primitive_function_call : read_inclination_function
                         | read_altitude_function
                         | read_temperature_function
                         | read_acceleration_function
-                        | set_camera_state_function
+                        | turn_on_camera_function
+                        | turn_off_camera_function
                         | take_picture_function
                         | read_timestamp_function
-                        | connect_to_computer_function;
+                        | connect_to_computer_function
+                        | takeoff_function
+                        | land_function;
 
 read_inclination_function : READ_INCLINATION LP RP; 
 read_altitude_function : READ_ALTITUDE LP RP; 
 read_temperature_function : READ_TEMPERATURE LP RP; 
 read_acceleration_function : READ_ACCELERATION LP RP; 
-set_camera_state_function : SET_CAMERA_STATE LP BOOLEAN RP; 
+turn_on_camera_function : TURN_ON_CAMERA LP RP; 
+turn_off_camera_function : TURN_OFF_CAMERA LP RP; 
 take_picture_function : TAKE_PICTURE LP RP; 
 read_timestamp_function : READ_TIMESTAMP LP RP; 
-connect_to_computer_function : CONNECT_TO_COMPUTER LP RP; 
+connect_to_computer_function : CONNECT_TO_COMPUTER LP RP;
+takeoff : TAKEOFF LP RP;
+land : LAND LP RP; 
+get_flight_time : GET_FLIGHT_TIME LP RP;
          
 %%
 #include "lex.yy.c"
