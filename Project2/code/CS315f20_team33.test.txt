@@ -1,0 +1,29 @@
+$ This example program demonstrates the features of RUNE a drone programming language. $
+
+$ The user defines a function so that he can check the drone's overall well being in mid air. $
+
+void checkStats() {
+    int batteryLevel <- getBattery();
+    int temperature <- readTemperature();
+
+    if (batteryLevel <= 50) {
+        int altitude <- readAltitude();
+        $ TRUE indicates the system is functioning normally. $
+        $ FALSE indicates the system is not functioning normally. $
+        if (altitude <= 60) {
+            emergency(FALSE);
+        } else { 
+            if (temperature <= 10) {
+                emergency(TRUE);
+            } else {
+                emergency(FALSE);
+            }
+        }
+    } else {
+        emergency(FALSE);
+    }
+}
+
+
+$ The user connects the drone to the computer. $
+connectToComputer();

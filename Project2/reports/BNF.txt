@@ -163,18 +163,3 @@
 <read_timestamp_function> ::= READ_TIMESTAMP LP RP 
 <connect_to_computer_function> ::= CONNECT_TO_COMPUTER LP RP  
 
-9) Our Extra Functions
-<do_flip_function> ::= DO_FLIP LP CHAR RP 
-<takeoff_function> ::= TAKEOFF LP RP 
-<land_function> ::= LAND LP RP 
-<emergency_function> ::= EMERGENCY LP BOOLEAN RP 
-<up_function> ::= UP LP INT 
-<down_function> ::= DOWN LP INT RP 
-<right_function> ::= RIGHT LP INT RP 
-<left_function> ::= LEFT LP INT RP 
-<forward_function> ::= FORWARD LP INT RP 
-<backward_function> ::= BACKWARD LP INT RP
-<rotate_clockwise_function> ::= ROTATE_CLOCKWISE LP BOOLEAN COMMA INT RP 
-<set_speed_function> ::= SET_SPEED LP INT RP 
-<get_speed_function> ::= GET_SPEED LP RP 
-<get_battery_function> ::= GET_BATTERY LP RP 
