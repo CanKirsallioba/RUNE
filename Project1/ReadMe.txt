@@ -1,1 +1,1 @@
-This part includes the lexical analyzer.
+First part of the project will live here.
